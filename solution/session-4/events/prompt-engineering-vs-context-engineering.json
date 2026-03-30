@@ -1,0 +1,51 @@
+{
+  "eventName": "Prompt Engineering vs Context Engineering: What Actually Works",
+  "description": "A lively talk-and-panel evening exploring the shift from prompt engineering to context engineering. We'll compare approaches, share real-world case studies, and debate what matters most when building production AI systems.",
+  "format": "talk",
+  "targetAudience": "AI practitioners and developers curious about moving beyond prompt tricks",
+  "estimatedAttendees": 50,
+  "suggestedDuration": "2 hours",
+  "date": null,
+  "topicTags": ["prompt-engineering", "context-engineering", "LLMs", "best-practices"],
+  "prerequisites": ["Basic understanding of LLM APIs"],
+  "suggestedSpeakers": [
+    {
+      "id": "marcus-johnson",
+      "name": "Marcus Johnson",
+      "reason": "Prompt engineering is his specialty and he excels at making concepts accessible. 25 talks of experience."
+    },
+    {
+      "id": "elena-vasquez",
+      "name": "Elena Vasquez",
+      "reason": "Her AI UX and product design perspective bridges the gap between prompting techniques and user outcomes."
+    },
+    {
+      "id": "alex-rivera",
+      "name": "Alex Rivera",
+      "reason": "Brings the production deployment angle — what actually works vs what looks good in demos."
+    }
+  ],
+  "suggestedVenue": {
+    "id": "downtown-tech-hub",
+    "name": "Downtown Tech Hub",
+    "reason": "Open floor plan and 80-person capacity fits the 50 estimate with room for walk-ins. Great AV for talks."
+  },
+  "schedule": {
+    "totalMinutes": 120,
+    "slots": [
+      {"time": "6:00 PM", "duration": 15, "type": "setup", "title": "Doors Open & Networking"},
+      {"time": "6:15 PM", "duration": 25, "type": "talk", "title": "The Prompt Engineering Playbook", "speaker": "marcus-johnson"},
+      {"time": "6:40 PM", "duration": 25, "type": "talk", "title": "Context Engineering: Beyond the Prompt", "speaker": "elena-vasquez"},
+      {"time": "7:05 PM", "duration": 15, "type": "break", "title": "Break"},
+      {"time": "7:20 PM", "duration": 25, "type": "talk", "title": "What Works in Production", "speaker": "alex-rivera"},
+      {"time": "7:45 PM", "duration": 15, "type": "networking", "title": "Open Q&A & Networking"}
+    ]
+  },
+  "estimatedCost": {
+    "venue": 150,
+    "food": 175,
+    "miscellaneous": 25,
+    "total": 350,
+    "perAttendee": 7.00
+  }
+}

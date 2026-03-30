@@ -1,0 +1,52 @@
+{
+  "eventName": "Getting Started with AI Agents: From Chatbots to Autonomous Tools",
+  "description": "A beginner-friendly evening covering the fundamentals of AI agents. Learn how agents differ from chatbots, see live demos of tool-using agents, and build a simple agent yourself. No PhD required.",
+  "format": "workshop",
+  "targetAudience": "Developers new to AI agents, with basic Python knowledge",
+  "estimatedAttendees": 40,
+  "suggestedDuration": "2.5 hours",
+  "date": null,
+  "topicTags": ["ai-agents", "tool-use", "function-calling", "beginner-friendly"],
+  "prerequisites": ["Basic Python", "Familiarity with APIs"],
+  "suggestedSpeakers": [
+    {
+      "id": "marcus-johnson",
+      "name": "Marcus Johnson",
+      "reason": "AI agents and tool use are his core topics. Rated 4.9 and specializes in making AI accessible to beginners."
+    },
+    {
+      "id": "jordan-kim",
+      "name": "Jordan Kim",
+      "reason": "Can demo self-hosted agent setups. Great for live coding and workshop facilitation."
+    },
+    {
+      "id": "david-okafor",
+      "name": "David Okafor",
+      "reason": "Can cover agent security basics — prompt injection risks that every agent builder should know."
+    }
+  ],
+  "suggestedVenue": {
+    "id": "maker-space",
+    "name": "Community Maker Space",
+    "reason": "Monitors and power at every seat — perfect for a hands-on agent building workshop. Capacity 40 matches estimate."
+  },
+  "schedule": {
+    "totalMinutes": 150,
+    "slots": [
+      {"time": "6:00 PM", "duration": 15, "type": "setup", "title": "Doors Open & Setup"},
+      {"time": "6:15 PM", "duration": 25, "type": "talk", "title": "What Are AI Agents? (And What They're Not)", "speaker": "marcus-johnson"},
+      {"time": "6:40 PM", "duration": 30, "type": "workshop", "title": "Build Your First Agent", "speaker": "marcus-johnson"},
+      {"time": "7:10 PM", "duration": 15, "type": "break", "title": "Break & Snacks"},
+      {"time": "7:25 PM", "duration": 25, "type": "talk", "title": "Running Agents Locally with Ollama", "speaker": "jordan-kim"},
+      {"time": "7:50 PM", "duration": 20, "type": "talk", "title": "Agent Security 101: Don't Get Prompt-Injected", "speaker": "david-okafor"},
+      {"time": "8:10 PM", "duration": 20, "type": "networking", "title": "Open Q&A & Networking"}
+    ]
+  },
+  "estimatedCost": {
+    "venue": 125,
+    "food": 200,
+    "miscellaneous": 50,
+    "total": 375,
+    "perAttendee": 9.38
+  }
+}

@@ -1,0 +1,57 @@
+[
+  {
+    "id": "downtown-tech-hub",
+    "name": "Downtown Tech Hub",
+    "address": "123 Innovation Blvd, Suite 400",
+    "capacity": 80,
+    "amenities": ["projector", "whiteboard", "wifi", "power-outlets", "mic-system", "recording-equipment"],
+    "costPerHour": 75,
+    "parking": "street and garage nearby",
+    "transitAccess": "2 blocks from Central Station",
+    "notes": "Great for large talks and panels. Open floor plan."
+  },
+  {
+    "id": "cowork-loft",
+    "name": "The Cowork Loft",
+    "address": "456 Startup Ave, 3rd Floor",
+    "capacity": 30,
+    "amenities": ["projector", "whiteboard", "wifi", "power-outlets", "kitchen"],
+    "costPerHour": 40,
+    "parking": "limited street parking",
+    "transitAccess": "5 min walk from Oak Street station",
+    "notes": "Cozy space, good for workshops and small groups. Kitchen available for food."
+  },
+  {
+    "id": "university-auditorium",
+    "name": "State University — CS Building, Room 201",
+    "address": "789 Campus Dr",
+    "capacity": 150,
+    "amenities": ["projector", "mic-system", "recording-equipment", "wifi", "tiered-seating"],
+    "costPerHour": 0,
+    "parking": "campus garage ($5/hr)",
+    "transitAccess": "University station direct access",
+    "notes": "Free if sponsored by CS department. Auditorium style — better for talks than workshops."
+  },
+  {
+    "id": "maker-space",
+    "name": "Community Maker Space",
+    "address": "321 Workshop Lane",
+    "capacity": 40,
+    "amenities": ["projector", "whiteboard", "wifi", "power-outlets", "standing-desks", "monitors"],
+    "costPerHour": 50,
+    "parking": "free lot",
+    "transitAccess": "15 min bus from downtown",
+    "notes": "Every seat has a monitor and power. Perfect for hands-on coding workshops."
+  },
+  {
+    "id": "rooftop-lounge",
+    "name": "Skyline Rooftop Lounge",
+    "address": "555 High Street, Penthouse",
+    "capacity": 60,
+    "amenities": ["projector", "wifi", "bar-service", "outdoor-space"],
+    "costPerHour": 100,
+    "parking": "valet available",
+    "transitAccess": "1 block from Metro Center",
+    "notes": "Premium venue for networking-heavy events. Indoor/outdoor space. No whiteboards."
+  }
+]

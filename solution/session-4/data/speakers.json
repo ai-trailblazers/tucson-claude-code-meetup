@@ -1,0 +1,90 @@
+[
+  {
+    "id": "sarah-chen",
+    "name": "Sarah Chen",
+    "title": "ML Engineer at DataCo",
+    "topics": ["RAG pipelines", "vector databases", "embeddings", "semantic search"],
+    "bio": "5 years building production ML systems. Contributor to LangChain. Runs a popular blog on practical RAG patterns.",
+    "talkFormats": ["talk", "workshop", "live-coding"],
+    "availability": ["weekday-evenings", "saturdays"],
+    "pastTalks": 12,
+    "rating": 4.8
+  },
+  {
+    "id": "marcus-johnson",
+    "name": "Marcus Johnson",
+    "title": "Senior Developer Advocate at CloudAI",
+    "topics": ["AI agents", "tool use", "function calling", "prompt engineering"],
+    "bio": "Former backend engineer turned DevRel. Specializes in making AI concepts accessible. Great with beginner audiences.",
+    "talkFormats": ["talk", "panel", "workshop"],
+    "availability": ["weekday-evenings", "weekends"],
+    "pastTalks": 25,
+    "rating": 4.9
+  },
+  {
+    "id": "priya-patel",
+    "name": "Priya Patel",
+    "title": "AI Research Scientist",
+    "topics": ["fine-tuning", "RLHF", "model evaluation", "LLM benchmarks"],
+    "bio": "PhD in NLP. Published papers on efficient fine-tuning methods. Prefers deep technical content over introductory material.",
+    "talkFormats": ["talk", "live-coding"],
+    "availability": ["saturdays"],
+    "pastTalks": 8,
+    "rating": 4.6
+  },
+  {
+    "id": "alex-rivera",
+    "name": "Alex Rivera",
+    "title": "Freelance AI Consultant",
+    "topics": ["AI in production", "MLOps", "cost optimization", "model serving"],
+    "bio": "Helps startups deploy AI without burning through runway. Practical, no-nonsense approach. Great war stories.",
+    "talkFormats": ["talk", "panel", "fireside-chat"],
+    "availability": ["weekday-evenings"],
+    "pastTalks": 15,
+    "rating": 4.7
+  },
+  {
+    "id": "jordan-kim",
+    "name": "Jordan Kim",
+    "title": "Open Source Maintainer — LocalAI",
+    "topics": ["self-hosted models", "Ollama", "vLLM", "edge deployment", "quantization"],
+    "bio": "Passionate about democratizing AI. Maintains LocalAI project. Can demo running models on a laptop live.",
+    "talkFormats": ["talk", "live-coding", "workshop"],
+    "availability": ["weekday-evenings", "sundays"],
+    "pastTalks": 10,
+    "rating": 4.5
+  },
+  {
+    "id": "elena-vasquez",
+    "name": "Elena Vasquez",
+    "title": "Product Manager at ToolChain AI",
+    "topics": ["AI UX", "human-in-the-loop", "AI product design", "user research for AI"],
+    "bio": "Bridges the gap between AI capabilities and user needs. Gives talks that make engineers think about the people using their tools.",
+    "talkFormats": ["talk", "panel", "fireside-chat"],
+    "availability": ["weekday-evenings", "saturdays"],
+    "pastTalks": 18,
+    "rating": 4.8
+  },
+  {
+    "id": "david-okafor",
+    "name": "David Okafor",
+    "title": "Security Engineer at SafeAI",
+    "topics": ["AI security", "prompt injection", "red teaming", "responsible AI", "PII handling"],
+    "bio": "Red teams AI systems for a living. Makes security topics engaging and practical. Always has a live demo that terrifies the audience.",
+    "talkFormats": ["talk", "live-coding", "workshop"],
+    "availability": ["weekday-evenings", "weekends"],
+    "pastTalks": 20,
+    "rating": 4.9
+  },
+  {
+    "id": "lisa-wong",
+    "name": "Lisa Wong",
+    "title": "CTO at MiniStartup",
+    "topics": ["building with LLMs", "startup AI stack", "Claude API", "multi-model architectures"],
+    "bio": "Built her startup's entire AI stack with a 3-person team. Knows what works at small scale. First-time speaker but very knowledgeable.",
+    "talkFormats": ["talk", "fireside-chat"],
+    "availability": ["saturdays"],
+    "pastTalks": 2,
+    "rating": 4.3
+  }
+]

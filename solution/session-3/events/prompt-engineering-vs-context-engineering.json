@@ -1,0 +1,52 @@
+{
+  "eventName": "Prompt Engineering vs Context Engineering: What Actually Works",
+  "description": "An evening of talks exploring the shift from prompt engineering to context engineering. We'll compare approaches, share real-world results, and debate what matters most when building AI-powered applications.",
+  "format": "talk",
+  "targetAudience": "Developers building with LLM APIs who want to move beyond basic prompting",
+  "estimatedAttendees": 55,
+  "suggestedDuration": "2.5 hours",
+  "date": null,
+  "topicTags": ["prompt-engineering", "context-engineering", "LLM-applications", "AI-architecture"],
+  "prerequisites": ["Basic experience with LLM APIs", "Familiarity with at least one AI framework"],
+  "suggestedSpeakers": [
+    {
+      "id": "marcus-johnson",
+      "name": "Marcus Johnson",
+      "reason": "Prompt engineering is one of his core topics. His DevRel background means he can make the comparison accessible to all levels."
+    },
+    {
+      "id": "elena-vasquez",
+      "name": "Elena Vasquez",
+      "reason": "Her AI UX and product design perspective adds a practical 'what users actually need' angle to the engineering debate."
+    },
+    {
+      "id": "alex-rivera",
+      "name": "Alex Rivera",
+      "reason": "Can ground the discussion in production reality — what actually works when you ship AI to real users at scale."
+    }
+  ],
+  "suggestedVenue": {
+    "id": "downtown-tech-hub",
+    "name": "Downtown Tech Hub",
+    "reason": "Capacity of 80 comfortably fits 55 attendees. Mic system and projector are ideal for a talk format. Central location with good transit access."
+  },
+  "schedule": {
+    "totalMinutes": 150,
+    "slots": [
+      {"time": "6:00 PM", "duration": 15, "type": "setup", "title": "Doors Open & Networking"},
+      {"time": "6:15 PM", "duration": 30, "type": "talk", "title": "The Prompt Engineering Playbook", "speaker": "marcus-johnson"},
+      {"time": "6:45 PM", "duration": 30, "type": "talk", "title": "Context Engineering: Designing What the Model Sees", "speaker": "elena-vasquez"},
+      {"time": "7:15 PM", "duration": 15, "type": "break", "title": "Break & Refreshments"},
+      {"time": "7:30 PM", "duration": 25, "type": "talk", "title": "What Actually Works in Production", "speaker": "alex-rivera"},
+      {"time": "7:55 PM", "duration": 20, "type": "panel", "title": "Panel: The Great Debate", "speaker": "marcus-johnson"},
+      {"time": "8:15 PM", "duration": 15, "type": "networking", "title": "Open Networking & Wrap-Up"}
+    ]
+  },
+  "estimatedCost": {
+    "venue": 187.50,
+    "food": 275,
+    "miscellaneous": 50,
+    "total": 512.50,
+    "perAttendee": 9.32
+  }
+}

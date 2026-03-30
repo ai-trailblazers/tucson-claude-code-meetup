@@ -1,0 +1,48 @@
+{
+  "eventName": "Building Production RAG Pipelines — Deep Dive",
+  "description": "An intensive deep-dive into production RAG pipelines. Longer talk slots, advanced content, live coding, and minimal breaks. For developers who want to go beyond the basics and understand the engineering decisions behind real RAG systems.",
+  "format": "workshop",
+  "targetAudience": "Intermediate to advanced Python developers with LLM API experience",
+  "estimatedAttendees": 40,
+  "suggestedDuration": "3 hours",
+  "date": null,
+  "topicTags": ["RAG", "vector-databases", "embeddings", "advanced", "live-coding", "production"],
+  "prerequisites": ["Python proficiency", "Experience with LLM APIs", "Basic understanding of embeddings", "Laptop with Python 3.10+"],
+  "suggestedSpeakers": [
+    {
+      "id": "sarah-chen",
+      "name": "Sarah Chen",
+      "reason": "Deep RAG expertise with 12 talks and a production blog. Can handle extended live-coding sessions and advanced Q&A."
+    },
+    {
+      "id": "priya-patel",
+      "name": "Priya Patel",
+      "reason": "AI Research Scientist with deep technical knowledge. Can cover evaluation metrics, fine-tuning retrievers, and advanced optimization — content most speakers can't deliver."
+    }
+  ],
+  "suggestedVenue": {
+    "id": "downtown-tech-hub",
+    "name": "Downtown Tech Hub",
+    "reason": "Recording equipment for capturing the dense content. Capacity 80 gives breathing room. Mic system helps for live-coding narration."
+  },
+  "schedule": {
+    "totalMinutes": 180,
+    "slots": [
+      {"time": "6:00 PM", "duration": 15, "type": "setup", "title": "Doors Open & Setup"},
+      {"time": "6:15 PM", "duration": 30, "type": "talk", "title": "RAG Architecture: The Full Picture", "speaker": "sarah-chen"},
+      {"time": "6:45 PM", "duration": 40, "type": "talk", "title": "Live Coding: Production Pipeline from Scratch", "speaker": "sarah-chen"},
+      {"time": "7:25 PM", "duration": 10, "type": "break", "title": "Quick Break"},
+      {"time": "7:35 PM", "duration": 30, "type": "talk", "title": "Evaluating RAG: Metrics That Matter", "speaker": "priya-patel"},
+      {"time": "8:05 PM", "duration": 30, "type": "talk", "title": "Advanced Retrieval: Reranking, Hybrid Search, and Fine-Tuned Embeddings", "speaker": "priya-patel"},
+      {"time": "8:35 PM", "duration": 10, "type": "break", "title": "Break"},
+      {"time": "8:45 PM", "duration": 15, "type": "networking", "title": "Q&A & Networking"}
+    ]
+  },
+  "estimatedCost": {
+    "venue": 225,
+    "food": 150,
+    "miscellaneous": 50,
+    "total": 425,
+    "perAttendee": 10.63
+  }
+}

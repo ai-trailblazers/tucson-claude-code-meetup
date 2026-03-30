@@ -1,0 +1,57 @@
+{
+  "eventName": "Building Production RAG Pipelines",
+  "description": "A hands-on workshop lab where you'll build a working RAG pipeline through guided exercises. Short intros followed by pair programming sessions with floating mentor support. You'll leave with code you actually wrote, understand, and can extend.",
+  "format": "workshop",
+  "targetAudience": "Intermediate Python developers with basic LLM experience",
+  "estimatedAttendees": 40,
+  "suggestedDuration": "3 hours",
+  "date": "2026-03-15",
+  "topicTags": ["RAG", "vector-databases", "embeddings", "hands-on", "pair-programming", "workshop"],
+  "prerequisites": ["Python basics", "Familiarity with API calls", "Laptop with Python 3.10+"],
+  "suggestedSpeakers": [
+    {
+      "id": "sarah-chen",
+      "name": "Sarah Chen",
+      "reason": "RAG pipelines are her core expertise. Excellent at breaking down complex concepts into achievable exercises. Lead instructor."
+    },
+    {
+      "id": "jordan-kim",
+      "name": "Jordan Kim",
+      "reason": "Workshop and live-coding specialist. Floating mentor during exercises. Demos self-hosted embedding alternatives."
+    },
+    {
+      "id": "marcus-johnson",
+      "name": "Marcus Johnson",
+      "reason": "Great at facilitating workshops and keeping beginners on track. Runs mentor stations during pair programming."
+    }
+  ],
+  "suggestedVenue": {
+    "id": "maker-space",
+    "name": "Community Maker Space",
+    "reason": "Every seat has a monitor and power — essential for a lab format. Standing desks allow mentors to move easily between pairs. Free parking."
+  },
+  "schedule": {
+    "totalMinutes": 180,
+    "slots": [
+      {"time": "6:00 PM", "duration": 15, "type": "setup", "title": "Doors Open & Environment Setup"},
+      {"time": "6:15 PM", "duration": 15, "type": "talk", "title": "RAG in 10 Minutes: What We're Building Tonight", "speaker": "sarah-chen"},
+      {"time": "6:30 PM", "duration": 30, "type": "workshop", "title": "Exercise 1: Document Loading & Chunking", "speaker": "sarah-chen"},
+      {"time": "7:00 PM", "duration": 5, "type": "talk", "title": "Debrief: Chunking Strategies That Work", "speaker": "sarah-chen"},
+      {"time": "7:05 PM", "duration": 25, "type": "workshop", "title": "Exercise 2: Embeddings & Vector Store", "speaker": "jordan-kim"},
+      {"time": "7:30 PM", "duration": 15, "type": "break", "title": "Break & Snacks"},
+      {"time": "7:45 PM", "duration": 5, "type": "talk", "title": "Intro: Retrieval & Generation", "speaker": "sarah-chen"},
+      {"time": "7:50 PM", "duration": 25, "type": "workshop", "title": "Exercise 3: Query Pipeline & Response Generation", "speaker": "sarah-chen"},
+      {"time": "8:15 PM", "duration": 5, "type": "talk", "title": "Debrief: Putting It All Together", "speaker": "jordan-kim"},
+      {"time": "8:20 PM", "duration": 20, "type": "workshop", "title": "Exercise 4: Optimize & Experiment (Pair Programming)", "speaker": "marcus-johnson"},
+      {"time": "8:40 PM", "duration": 5, "type": "talk", "title": "Show & Tell: Best Results", "speaker": "marcus-johnson"},
+      {"time": "8:45 PM", "duration": 15, "type": "networking", "title": "Q&A & Networking"}
+    ]
+  },
+  "estimatedCost": {
+    "venue": 150,
+    "food": 200,
+    "miscellaneous": 50,
+    "total": 400,
+    "perAttendee": 10.00
+  }
+}

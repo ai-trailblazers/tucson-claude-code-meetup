@@ -1,0 +1,6 @@
+{
+  "baseUrl": "https://your-gateway.ngrok.app/v1",
+  "apiKey": "your-ngrok-ai-gateway-key",
+  "defaultModel": "ngrok/auto",
+  "fallbackModel": "gpt-4o-mini"
+}

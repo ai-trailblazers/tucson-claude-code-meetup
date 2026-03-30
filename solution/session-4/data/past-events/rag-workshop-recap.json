@@ -1,0 +1,34 @@
+{
+  "eventName": "Building Production RAG Pipelines",
+  "eventFile": "events/rag-workshop-final.json",
+  "date": "2026-03-15",
+  "estimatedAttendees": 40,
+  "actualAttendees": 35,
+  "feedbackHighlights": [
+    "Workshop exercises were well-structured and achievable",
+    "Great speaker chemistry between Sarah and Jordan",
+    "Pair programming format helped beginners keep up"
+  ],
+  "improvementAreas": [
+    "WiFi was slow during the coding exercises — need venue with better bandwidth",
+    "Some exercises were too long — consider shorter, more focused tasks",
+    "More time for Q&A between exercises"
+  ],
+  "venueRating": 3.5,
+  "formatRating": 4.2,
+  "speakerRatings": {
+    "sarah-chen": 4.9,
+    "jordan-kim": 4.6,
+    "marcus-johnson": 4.7
+  },
+  "lessonsLearned": [
+    "Workshop format works best with 2 main speakers + floating mentors",
+    "WiFi bandwidth is critical for coding workshops — test beforehand",
+    "35/40 attendance suggests our estimates are slightly optimistic — plan for 85% show rate"
+  ],
+  "nextEventSuggestions": [
+    "Follow-up: Advanced RAG with multi-modal retrieval",
+    "Consider Downtown Tech Hub for better WiFi infrastructure",
+    "Shorten exercises to 20 min max with 5 min debrief after each"
+  ]
+}

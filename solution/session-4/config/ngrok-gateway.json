@@ -1,0 +1,9 @@
+{
+  "gateway": {
+    "endpoint": "https://your-ngrok-ai-gateway.ngrok.app",
+    "apiKey": "ngrok_ai_PLACEHOLDER_REPLACE_ME",
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-20250514"
+  },
+  "note": "Replace apiKey with your ngrok AI Gateway key. See https://ngrok.com/docs/ai-gateway/"
+}

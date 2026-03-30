@@ -1,0 +1,52 @@
+{
+  "eventName": "Prompt Engineering vs Context Engineering: What Actually Works",
+  "description": "The AI world has moved beyond simple prompt tricks. This evening of talks explores the shift from prompt engineering to context engineering — how to design the information environment around your LLM calls for reliable, production-grade results. Expect practical frameworks, live demos, and honest takes on what's hype vs. what ships.",
+  "format": "talk",
+  "targetAudience": "Developers building with LLM APIs who want to move past basic prompt templates",
+  "estimatedAttendees": 55,
+  "suggestedDuration": "2.5 hours",
+  "date": "2026-04-16",
+  "topicTags": ["prompt-engineering", "context-engineering", "AI-agents", "tool-use", "AI-in-production"],
+  "prerequisites": ["Basic experience calling an LLM API", "Familiarity with at least one AI framework (LangChain, Claude SDK, OpenAI SDK, etc.)"],
+  "suggestedSpeakers": [
+    {
+      "id": "marcus-johnson",
+      "name": "Marcus Johnson",
+      "reason": "Prompt engineering is his bread and butter as a DevRel. Has given 25 talks making AI concepts accessible — perfect to set the stage with 'what prompt engineering actually is' before the context engineering pivot."
+    },
+    {
+      "id": "alex-rivera",
+      "name": "Alex Rivera",
+      "reason": "Brings the production reality check. His experience deploying AI for startups means he can speak to what breaks when you rely on prompts alone and why context engineering matters in the real world."
+    },
+    {
+      "id": "elena-vasquez",
+      "name": "Elena Vasquez",
+      "reason": "Adds the product/UX angle — how context engineering changes the user experience of AI products. Her human-in-the-loop expertise bridges the gap between engineering technique and user outcomes."
+    }
+  ],
+  "suggestedVenue": {
+    "id": "downtown-tech-hub",
+    "name": "Downtown Tech Hub",
+    "reason": "Capacity 80 comfortably fits 55 attendees with room for walk-ins. Mic system and projector are essential for a talk-format event. Central location with good transit access."
+  },
+  "schedule": {
+    "totalMinutes": 150,
+    "slots": [
+      {"time": "6:30 PM", "duration": 15, "type": "setup", "title": "Doors Open & Setup"},
+      {"time": "6:45 PM", "duration": 25, "type": "talk", "title": "The Prompt Engineering Playbook: What Works, What Doesn't", "speaker": "marcus-johnson"},
+      {"time": "7:10 PM", "duration": 25, "type": "talk", "title": "From Prompts to Context: Engineering Reliable AI Systems", "speaker": "alex-rivera"},
+      {"time": "7:35 PM", "duration": 15, "type": "break", "title": "Break & Networking"},
+      {"time": "7:50 PM", "duration": 25, "type": "talk", "title": "Context Engineering Meets UX: Designing for Humans in the Loop", "speaker": "elena-vasquez"},
+      {"time": "8:15 PM", "duration": 30, "type": "panel", "title": "Panel: Prompt Engineering Is Dead — Agree or Disagree?", "speaker": "marcus-johnson"},
+      {"time": "8:45 PM", "duration": 15, "type": "networking", "title": "Open Networking & Q&A"}
+    ]
+  },
+  "estimatedCost": {
+    "venue": 188,
+    "food": 275,
+    "miscellaneous": 50,
+    "total": 513,
+    "perAttendee": 9.33
+  }
+}

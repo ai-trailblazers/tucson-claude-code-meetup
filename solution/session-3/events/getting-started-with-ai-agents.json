@@ -1,0 +1,47 @@
+{
+  "eventName": "Getting Started with AI Agents: From Concepts to Code",
+  "description": "A beginner-friendly evening of talks covering what AI agents are, how they work under the hood, and how to design them for real users. You'll leave understanding tool use, agent loops, and human-in-the-loop patterns — no PhD required.",
+  "format": "talk",
+  "targetAudience": "Developers curious about AI agents, from beginners to intermediate builders",
+  "estimatedAttendees": 50,
+  "suggestedDuration": "2.5 hours",
+  "date": null,
+  "topicTags": ["ai-agents", "tool-use", "function-calling", "human-in-the-loop", "ai-product-design"],
+  "prerequisites": ["Basic programming experience", "Familiarity with APIs"],
+  "suggestedSpeakers": [
+    {
+      "id": "marcus-johnson",
+      "name": "Marcus Johnson",
+      "reason": "AI agents and tool use are his core topics. His DevRel background and 4.9 rating make him ideal for making agent concepts accessible to beginners."
+    },
+    {
+      "id": "elena-vasquez",
+      "name": "Elena Vasquez",
+      "reason": "Her expertise in human-in-the-loop and AI product design provides the crucial 'how to build agents people actually want to use' perspective."
+    }
+  ],
+  "suggestedVenue": {
+    "id": "downtown-tech-hub",
+    "name": "Downtown Tech Hub",
+    "reason": "Capacity of 80 handles the 50-attendee estimate with headroom. Projector, mic system, and central location make it ideal for a talk-format event."
+  },
+  "schedule": {
+    "totalMinutes": 150,
+    "slots": [
+      {"time": "6:00 PM", "duration": 15, "type": "setup", "title": "Doors Open & Networking"},
+      {"time": "6:15 PM", "duration": 30, "type": "talk", "title": "What Are AI Agents? Demystifying the Buzzword", "speaker": "marcus-johnson"},
+      {"time": "6:45 PM", "duration": 30, "type": "talk", "title": "Tool Use & Function Calling: How Agents Actually Work", "speaker": "marcus-johnson"},
+      {"time": "7:15 PM", "duration": 15, "type": "break", "title": "Break & Refreshments"},
+      {"time": "7:30 PM", "duration": 30, "type": "talk", "title": "Designing Agents for Real Users: Human-in-the-Loop Patterns", "speaker": "elena-vasquez"},
+      {"time": "8:00 PM", "duration": 15, "type": "talk", "title": "Lightning Round: 3 Agent Architectures in 15 Minutes", "speaker": "marcus-johnson"},
+      {"time": "8:15 PM", "duration": 15, "type": "networking", "title": "Open Q&A & Networking"}
+    ]
+  },
+  "estimatedCost": {
+    "venue": 187.50,
+    "food": 250,
+    "miscellaneous": 50,
+    "total": 487.50,
+    "perAttendee": 9.75
+  }
+}

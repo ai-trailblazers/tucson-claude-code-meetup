@@ -45,6 +45,26 @@ The `data/` folder contains sample data you can copy into your project:
 - `speakers.json` — 8 speakers with topics, availability, and ratings
 - `sample-event-plan.json` — reference output showing the expected event plan format
 
+## Solution / Reference Implementation
+
+The `solution/` folder contains a complete MeetupBot implementation — one snapshot per session showing exactly what your project should look like after completing that session's exercises.
+
+```
+solution/
+├── session-1/   # CLAUDE.md, data files, /plan-event command, sample output
+├── session-2/   # + INITIAL.md, PRP, /build-schedule, /draft-announcement, /draft-speaker-outreach
+├── session-3/   # + schedule-optimizer & comms-reviewer subagents, auto-review hook
+└── session-4/   # + parallel variants, /post-event command, feedback loop, complete system
+```
+
+Use these to:
+- **Compare your work** after each session checkpoint
+- **Debug issues** when your output doesn't match expectations
+- **Demo the finished product** before starting each session
+- **Copy specific files** if you fall behind and need to catch up
+
+Each session folder is self-contained — you can `cp -r solution/session-N/ my-project/` to reset to any checkpoint.
+
 ## Reference Materials
 
 The `references/claude-howto/` directory contains the complete [Claude How-To](https://github.com/luongnv89/claude-howto) guides — 10 progressive tutorial modules with copy-paste templates, visual diagrams, and working examples for every Claude Code feature. Use these as deep-dive companions for each session.

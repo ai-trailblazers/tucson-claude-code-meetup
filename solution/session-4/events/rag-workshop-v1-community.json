@@ -1,0 +1,55 @@
+{
+  "eventName": "Building Production RAG Pipelines — Community Edition",
+  "description": "A community-first workshop on RAG pipelines with plenty of networking, ice-breakers, and group exercises. Designed to be welcoming for developers at all levels, with experienced mentors to help everyone keep up.",
+  "format": "workshop",
+  "targetAudience": "Intermediate Python developers with basic LLM experience, welcoming to beginners",
+  "estimatedAttendees": 40,
+  "suggestedDuration": "3 hours",
+  "date": null,
+  "topicTags": ["RAG", "vector-databases", "embeddings", "community", "beginner-friendly"],
+  "prerequisites": ["Python basics", "Familiarity with API calls", "Laptop with Python 3.10+"],
+  "suggestedSpeakers": [
+    {
+      "id": "sarah-chen",
+      "name": "Sarah Chen",
+      "reason": "RAG pipelines are her core expertise. Her blog-style teaching approach works well for mixed-level audiences."
+    },
+    {
+      "id": "marcus-johnson",
+      "name": "Marcus Johnson",
+      "reason": "Excels at making complex AI concepts accessible. Great at facilitating group exercises and keeping energy high."
+    },
+    {
+      "id": "elena-vasquez",
+      "name": "Elena Vasquez",
+      "reason": "Can bridge the gap between RAG as a technical concept and RAG as a user-facing product. Good for the 'why it matters' angle."
+    }
+  ],
+  "suggestedVenue": {
+    "id": "maker-space",
+    "name": "Community Maker Space",
+    "reason": "Every seat has a monitor and power outlets. Capacity 40 matches target. Free parking makes it accessible for the community focus."
+  },
+  "schedule": {
+    "totalMinutes": 180,
+    "slots": [
+      {"time": "6:00 PM", "duration": 15, "type": "setup", "title": "Doors Open & Setup"},
+      {"time": "6:15 PM", "duration": 15, "type": "networking", "title": "Ice-Breaker: Find Your RAG Buddy"},
+      {"time": "6:30 PM", "duration": 20, "type": "talk", "title": "What Is RAG and Why Should You Care?", "speaker": "marcus-johnson"},
+      {"time": "6:50 PM", "duration": 25, "type": "talk", "title": "RAG Architecture Walkthrough", "speaker": "sarah-chen"},
+      {"time": "7:15 PM", "duration": 15, "type": "break", "title": "Break & Snacks"},
+      {"time": "7:30 PM", "duration": 30, "type": "workshop", "title": "Group Exercise: Build a Pipeline Together", "speaker": "sarah-chen"},
+      {"time": "8:00 PM", "duration": 20, "type": "talk", "title": "RAG in the Real World: User Perspectives", "speaker": "elena-vasquez"},
+      {"time": "8:20 PM", "duration": 10, "type": "break", "title": "Stretch Break"},
+      {"time": "8:30 PM", "duration": 15, "type": "workshop", "title": "Group Show & Tell"},
+      {"time": "8:45 PM", "duration": 15, "type": "networking", "title": "Open Networking & Q&A"}
+    ]
+  },
+  "estimatedCost": {
+    "venue": 150,
+    "food": 250,
+    "miscellaneous": 75,
+    "total": 475,
+    "perAttendee": 11.88
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "eventName": "Building RAG Pipelines: From Prototype to Production",
+  "description": "A hands-on evening workshop where you'll build a working RAG pipeline from scratch. We'll cover chunking strategies, embedding models, vector stores, and retrieval optimization. Bring your laptop — you'll leave with running code.",
+  "format": "workshop",
+  "targetAudience": "Intermediate Python developers with basic LLM API experience",
+  "estimatedAttendees": 35,
+  "suggestedDuration": "3 hours",
+  "date": null,
+  "topicTags": ["RAG", "vector-databases", "embeddings", "retrieval", "LangChain"],
+  "prerequisites": ["Python basics", "Familiarity with API calls", "Laptop with Python 3.10+"],
+  "suggestedSpeakers": [
+    {
+      "id": "sarah-chen",
+      "name": "Sarah Chen",
+      "reason": "RAG pipelines are her core expertise. Has given 12 talks and runs a blog on practical RAG patterns."
+    },
+    {
+      "id": "jordan-kim",
+      "name": "Jordan Kim",
+      "reason": "Can demo self-hosted embedding models as an alternative to API-based ones. Good hands-on workshop facilitator."
+    }
+  ],
+  "suggestedVenue": {
+    "id": "maker-space",
+    "name": "Community Maker Space",
+    "reason": "Every seat has a monitor and power — essential for a hands-on coding workshop. Capacity 40 fits the 35 estimate with room."
+  },
+  "schedule": {
+    "totalMinutes": 180,
+    "slots": [
+      {"time": "6:00 PM", "duration": 15, "type": "setup", "title": "Doors Open & Setup"},
+      {"time": "6:15 PM", "duration": 30, "type": "talk", "title": "RAG Architecture Overview", "speaker": "sarah-chen"},
+      {"time": "6:45 PM", "duration": 45, "type": "workshop", "title": "Build Your First Pipeline", "speaker": "sarah-chen"},
+      {"time": "7:30 PM", "duration": 15, "type": "break", "title": "Break & Networking"},
+      {"time": "7:45 PM", "duration": 30, "type": "talk", "title": "Self-Hosted Embeddings with Ollama", "speaker": "jordan-kim"},
+      {"time": "8:15 PM", "duration": 30, "type": "workshop", "title": "Optimize Your Retrieval", "speaker": "sarah-chen"},
+      {"time": "8:45 PM", "duration": 15, "type": "networking", "title": "Open Q&A & Networking"}
+    ]
+  },
+  "estimatedCost": {
+    "venue": 150,
+    "food": 200,
+    "miscellaneous": 50,
+    "total": 400,
+    "perAttendee": 11.43
+  }
+}

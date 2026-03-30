@@ -1,0 +1,15 @@
+{
+  "gateway": {
+    "name": "meetupbot-gateway",
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-20250514",
+    "endpoint": "https://api.ngrok.com/ai-gateway"
+  },
+  "settings": {
+    "cacheEnabled": true,
+    "rateLimitPerMinute": 30,
+    "logging": true,
+    "logDestination": "logs/gateway.log"
+  },
+  "notes": "Configuration for ngrok AI Gateway. See https://ngrok.com/docs/ai-gateway/ for setup instructions."
+}
