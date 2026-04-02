@@ -37,6 +37,8 @@ claude
 
 Each `sessions/session-N/` folder contains:
 - `EXERCISE.md` — step-by-step instructions for the session
+- `SLIDES.md` — complete slide deck in markdown (presenter-ready)
+- `SCRIPT.md` — speaker script with talking points, demo cues, and timing
 
 ## Sample Data
 
