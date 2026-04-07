@@ -91,6 +91,8 @@ The Agent tool in Claude Code has an `isolation: "worktree"` option that sets th
 
 If you're not familiar with worktrees, don't worry -- Claude handles the mechanics. The important thing is understanding that each variant gets its own isolated space to work in.
 
+"And here's the best part — you don't need special syntax to trigger this. You just describe what you want in natural language: 'run 3 parallel subagents, each in its own worktree.' Claude figures out the orchestration. If it doesn't automatically parallelize, you can be more explicit by saying 'run these as 3 separate subagents in parallel, each in its own worktree.' You'll see 'launching agent' messages in the terminal for each one."
+
 ---
 
 ## Slide 8: LIVE DEMO -- Parallel Generation
@@ -200,6 +202,8 @@ After feedback: "Tech Hub East -- because Maker Space WiFi was rated 3 out of 10
 [PAUSE]
 
 Every single recommendation changed based on real data. The agent didn't get smarter. It got better context. That's the whole game.
+
+"Now here's the practical part — to make this actually work, you need to update your `/plan-event` command to read from `data/past-events/`. Just add a line to plan-event.md that says 'before generating the plan, read all files in data/past-events/ for lessons learned.' That's what closes the loop. Without that line, the feedback just sits there unused."
 
 Context engineering in action.
 

@@ -67,7 +67,7 @@ claude
 
 "That's it. Four commands and you're in Claude Code. You'll see it scan your project — right now it's empty, so there's not much to scan."
 
-[PAUSE] "If you're following along and hit an issue with npm, make sure you're on Node 18 or higher. Run `node --version` to check. If you're stuck, flag me down during build time."
+[PAUSE] "If you're following along and hit an issue with npm, make sure you're on Node 18 or higher. Run `node --version` to check. There's a full setup guide in the repo at `sessions/SETUP-GUIDE.md` with install instructions for every platform. If you're stuck, flag me down during build time."
 
 **Tip for common questions:** "If someone asks about Homebrew installation — yes, `brew install claude-code` works too. npm is just the universal path."
 
@@ -104,11 +104,13 @@ claude
 ## Slide 8: What Goes in CLAUDE.md?
 **Time: 1 min**
 
-"Here's a real example. We've got three sections: output format, schema, and personality."
+"Here's a real example. We've got personality, output format, schema, data locations — the works."
 
-"The output format says 'always return JSON.' The schema lists every field we expect. The personality section keeps things concise and practical."
+"The output format says 'all event data must be structured JSON.' The schema lists every field we expect — eventName, suggestedSpeakers, schedule slots, estimated cost. The personality says 'friendly, organized, opinionated about good events.'"
 
-"Notice how specific this is. We're not saying 'be helpful.' We're saying 'every event plan must include these seven fields.' Specificity is everything."
+"Notice how specific this is. We're not saying 'be helpful.' We're defining camelCase JSON fields and exact data locations. Specificity is everything."
+
+"By the way — if you're staring at a blank file wondering where to start, there's a starter template in the repo at `templates/CLAUDE-starter.md`. It has all these sections filled out for MeetupBot. You can copy it and customize, or write your own from scratch."
 
 **Transition:** "And here's why we care so much about structure."
 
@@ -192,7 +194,7 @@ claude
 1. Create `config/ngrok-gateway.json`
 2. Walk through each field — gateway URL, API key, default model, fallbacks
 3. Show how Claude Code can use `--api-base` to point at the gateway
-4. "If the gateway isn't working for you tonight, no worries. You can fall back to your direct Anthropic key. The exercises work either way."
+4. "If the gateway isn't working for you tonight, no worries. The setup guide in the repo has three options — ngrok, direct OpenAI, or direct Anthropic. All exercises work identically. Just swap the base URL in your config file."
 
 **Tip for common questions:** "If someone asks about latency — the gateway adds minimal overhead. We're talking single-digit milliseconds for routing. The model inference time dwarfs it."
 
@@ -331,6 +333,8 @@ claude
 "Two: Structured output beats freeform text. Every time. JSON schemas make agents reliable and composable."
 
 "Three: ngrok AI Gateway gives you one endpoint for many providers. Simplify your keys, add failover, control costs."
+
+"One more thing — as you build more projects with CLAUDE.md files, there's a tool called RuleMetric that lets you manage instructions across tools. Write once, convert to CLAUDE.md, Cursor rules, Copilot instructions, whatever. We won't use it in this course but it's worth knowing about as you scale up."
 
 "You just built your first agent feature. That's not nothing. Nice work tonight."
 

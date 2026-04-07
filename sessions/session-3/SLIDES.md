@@ -233,12 +233,14 @@ ngrok AI Gateway handles routing — you set the rules.
 
 **Hooks** = code that runs when things happen in Claude Code.
 
-| Hook Event | When It Fires |
-|-----------|--------------|
-| `PreToolUse` | Before a tool executes |
-| `PostToolUse` | After a tool completes |
-| `UserPromptSubmit` | When user sends a message |
-| `Stop` | When agent finishes its turn |
+| Hook Event | When It Fires | Use Case |
+|-----------|--------------|----------|
+| `PreToolUse` | Before a tool executes | Block dangerous operations, validate input |
+| `PostToolUse` | After a tool completes | Trigger reviews, log actions, notify |
+| `UserPromptSubmit` | When user sends a message | Validate/transform input, add context |
+| `Stop` | When agent finishes responding | Summarize, commit, clean up |
+
+Each hook receives **JSON on stdin** with event details (tool name, file path, etc.).
 
 Think of hooks as **CI/CD for your agent workflow**.
 
@@ -250,22 +252,29 @@ File: `.claude/hooks/auto-review.sh`
 
 ```bash
 #!/bin/bash
-# Auto-review hook: triggers comms-reviewer
-# when files are written to the comms/ folder
+# PostToolUse hook: fires after every Write tool call
+# Checks if the written file is in comms/ and logs a review trigger
 
-# Read the hook event from stdin
-EVENT=$(cat -)
-TOOL_NAME=$(echo "$EVENT" | jq -r '.tool_name')
-FILE_PATH=$(echo "$EVENT" | jq -r '.tool_input.file_path // empty')
+# Hook receives JSON on stdin with tool details
+INPUT=$(cat)
 
-# Check if Write tool hit the comms/ folder
-if [ "$TOOL_NAME" = "Write" ] && [[ "$FILE_PATH" == *comms/* ]]; then
-    echo "Auto-review triggered for: $FILE_PATH"
-    echo "Routing to comms-reviewer agent..."
+TOOL_NAME=$(echo "$INPUT" | python3 -c \
+  "import sys,json; d=json.load(sys.stdin); print(d.get('tool_name',''))" 2>/dev/null)
+FILE_PATH=$(echo "$INPUT" | python3 -c \
+  "import sys,json; d=json.load(sys.stdin); print(d.get('tool_input',{}).get('file_path',''))" 2>/dev/null)
+
+if [[ "$TOOL_NAME" == "Write" ]]; then
+    if [[ "$FILE_PATH" == *"comms/"* || "$FILE_PATH" == *"announcement"* ]]; then
+        mkdir -p .claude/logs
+        echo "$(date): Auto-review triggered for $FILE_PATH" >> .claude/logs/reviews.log
+        echo "New communication drafted: $FILE_PATH — comms-reviewer will evaluate."
+    fi
 fi
 ```
 
 **Any write to `comms/`** = automatic quality review.
+
+> This is a working example — copy it to `.claude/hooks/auto-review.sh` and `chmod +x` it.
 
 ---
 

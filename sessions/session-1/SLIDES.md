@@ -94,6 +94,8 @@ claude
 - Git
 - Anthropic API key (or ngrok AI Gateway)
 
+> See `sessions/SETUP-GUIDE.md` for detailed install instructions + LLM provider options
+
 **LIVE DEMO**
 
 ---
@@ -152,26 +154,30 @@ You're not just prompting — you're **programming behavior**.
 # What Goes in CLAUDE.md?
 
 ```markdown
-# MeetupBot Agent Rules
-
-## Output Format
-IMPORTANT: Always return event plans as JSON.
-
-## Schema
-Every event plan MUST include:
-- event_name (string)
-- date (ISO 8601)
-- description (string, 2-3 sentences)
-- target_audience (string)
-- suggested_speakers (array of objects)
-- agenda (array of time/topic pairs)
-- logistics (object: venue, capacity, equipment)
+# MeetupBot
 
 ## Personality
-You are a helpful meetup organizer. Be concise
-and practical. Prefer structured output over
-freeform text.
+Friendly, organized, opinionated about good events.
+Concise and actionable — no filler.
+
+## Output Format
+IMPORTANT: All event data MUST be structured JSON.
+
+## Event Plan Schema
+- eventName, description, format, targetAudience
+- estimatedAttendees, suggestedDuration, topicTags
+- suggestedSpeakers: [{id, name, reason}]
+- suggestedVenue: {id, name, reason}
+- schedule: {totalMinutes, slots: [{time, duration, type, title}]}
+- estimatedCost: {venue, food, total, perAttendee}
+
+## Data Locations
+- Venues: data/venues.json
+- Speakers: data/speakers.json
+- Past events: data/past-events/
 ```
+
+> **Starter template available:** `templates/CLAUDE-starter.md` has a complete, ready-to-use version with all sections filled out.
 
 ---
 
@@ -306,11 +312,15 @@ NGROK_AI_GATEWAY_URL=https://your-gateway.ngrok.app
 }
 ```
 
-### Fallback strategy:
+### Three options (see `sessions/SETUP-GUIDE.md`):
 
-- If gateway is configured -> use it
-- If not -> fall back to direct provider URL
-- Works with Claude Code's `--api-base` flag
+| Option | Setup |
+|--------|-------|
+| **ngrok AI Gateway** | One endpoint, failover, cost routing |
+| **Direct OpenAI** | Simplest — just need an API key |
+| **Direct Anthropic** | Native Claude models |
+
+All exercises work identically regardless of choice.
 
 **LIVE DEMO**
 
@@ -501,5 +511,7 @@ Raise your hand if you get stuck. Help your neighbor first.
    - Simplify keys, add failover, control costs
 
 ### You just built your first agent feature.
+
+> **Scaling tip:** As your CLAUDE.md files grow across projects, [RuleMetric](https://github.com/nickyeager/momento-mori) helps manage instructions at scale — write once, convert to 25+ AI tool formats.
 
 See you at Session 2.

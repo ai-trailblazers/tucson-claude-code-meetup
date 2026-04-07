@@ -113,6 +113,8 @@
 
 "This replaces the vague Slack message that says 'hey can you build a scheduling thing.' Instead, you're giving Claude a complete brief."
 
+"There's a blank template at `templates/INITIAL.md` and a filled-out example at `templates/INITIAL_EXAMPLE.md` in the repo. But I'd encourage you to write your own from scratch first — that's where the learning happens."
+
 "The magic is that this format works for *any* feature, not just our meetup bot. You could use this for building API endpoints, data pipelines, UI components — anything."
 
 > **Common question:** "Does INITIAL.md have to be called INITIAL.md?"
@@ -142,7 +144,9 @@
 
 "A PRP includes complete context, a step-by-step implementation plan, validation gates — which are basically tests that must pass before moving to the next step — and error handling patterns."
 
-"The key idea is that you don't write PRPs by hand. Claude generates them from your INITIAL.md. It reads your codebase, understands your patterns, and creates a blueprint that it can then follow."
+"The key idea is that you don't write PRPs by hand. Claude generates them from your INITIAL.md using a custom slash command called `/generate-prp`. This isn't built into Claude Code — it's a slash command we provide in the repo at `templates/.claude/commands/`. You'll copy it into your project before using it."
+
+"The command reads your codebase, understands your patterns, and creates a blueprint that it can then follow."
 
 "Why not just let Claude code from INITIAL.md directly? Because the PRP step gives you a checkpoint. You can review the plan before any code gets written. Catching a misunderstanding in a PRP is way cheaper than catching it in working code."
 

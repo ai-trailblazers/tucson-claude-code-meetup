@@ -134,6 +134,8 @@ Gotchas, edge cases, integration points — what could go wrong
 
 This replaces vague Slack messages with an engineering spec.
 
+> **Template:** See `templates/INITIAL.md` for the blank template and `templates/INITIAL_EXAMPLE.md` for a filled-out example.
+
 ---
 
 ## Slide 9: Good vs. Bad Feature Requests
@@ -174,6 +176,8 @@ Like a PRD, but designed for AI coding assistants:
 - **Error handling patterns** — what to do when things go wrong
 
 Generated from your INITIAL.md by `/generate-prp`.
+
+> **Note:** `/generate-prp` and `/execute-prp` are custom slash commands, not built-in Claude Code features. Ready-made versions are in `templates/.claude/commands/` — copy them into your project's `.claude/commands/` directory.
 
 You write the WHAT. The PRP figures out the HOW.
 

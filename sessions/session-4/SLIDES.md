@@ -125,14 +125,16 @@ git worktree add ../meetup-agent-v2 -b variant-2
 git worktree add ../meetup-agent-v3 -b variant-3
 ```
 
-The Agent tool uses this for isolation:
+Claude Code's Agent tool uses `isolation: "worktree"` automatically.
 
-```json
-{
-  "tool": "Agent",
-  "isolation": "worktree"
-}
+**You don't need special syntax** — just describe what you want:
+
 ```
+Run 3 parallel subagents for the RAG Workshop brief.
+Each in its own worktree. V1: community-first. V2: deep-dive. V3: workshop-lab.
+```
+
+Claude handles the worktree creation, parallel execution, and result merging.
 
 Same repo. Separate branches. Parallel work.
 
@@ -276,6 +278,14 @@ Venue: Tech Hub East (Maker Space WiFi rated 3/10)
 Exercises: 20 minutes max (past events ran over)
   - Added hard cutoff timers
 Lightning talks: Added 15-min block (highest-rated segment)
+```
+
+**Wiring it up:** Update `/plan-event` to read `data/past-events/`:
+
+```markdown
+# In .claude/commands/plan-event.md, add:
+Before generating the plan, read all files in data/past-events/
+for lessons learned. Apply them to venue, format, and schedule.
 ```
 
 **Context engineering in action.**
