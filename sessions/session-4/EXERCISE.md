@@ -214,3 +214,14 @@ You've built a complete MeetupBot that:
 - **Learns** from post-event feedback to improve future planning
 
 These patterns — structured output, context engineering, specialist subagents, automated hooks, parallel generation, and feedback loops — transfer to any agent you build next.
+
+## What's New in Claude Code (April 2026)
+
+| Feature | What It Does |
+|---|---|
+| **Routines** | Cloud automations — schedule prompts, react to GitHub events, or trigger via API. Automate the feedback loop! |
+| **Claude Agent SDK** | Embed Claude Code agents in your own apps. `pip install claude-agent-sdk` (Python) or `npm install @anthropic-ai/claude-agent-sdk` (TypeScript) |
+| **Auto Mode** | Classifier-based permissions — safe actions auto-approved, risky ones blocked |
+| **Conditional hooks** | Target hooks to specific actions with `if` field |
+| **Opus 4.7** | Latest model — 1M context, best for complex reasoning |
+| **Claude Code surfaces** | CLI, Desktop (Mac/Windows), Web (claude.ai/code), VS Code, JetBrains |

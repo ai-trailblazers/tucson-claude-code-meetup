@@ -7,8 +7,10 @@ A hands-on, 4-session course where you build **MeetupBot** — an AI-powered age
 - Terminal/command line access
 - Node.js installed
 - Git installed (we'll cover the basics)
-- Text editor (VS Code recommended)
+- Text editor (VS Code recommended — has a Claude Code extension!)
 - ngrok account with AI Gateway access (or a direct LLM provider API key as fallback)
+
+> **Claude Code runs everywhere:** CLI (terminal), Desktop app (Mac/Windows), Web (`claude.ai/code`), VS Code extension, and JetBrains plugin. We use the CLI in this course, but all features work across all surfaces.
 
 ### Verify Your Setup
 
@@ -138,6 +140,11 @@ These patterns transfer to any agent project:
 | Hooks | 3 | Automate quality checks in the agent lifecycle |
 | Parallel generation | 4 | Non-determinism becomes an advantage with evaluation |
 | Feedback loops | 4 | Agents that learn from past results |
+| Auto Mode | 1 | Classifier-based permissions — safe actions auto-approved |
+| Conditional hooks | 3 | Target hooks to specific actions with `if` field |
+| Routines | 4 | Cloud automations on schedule, GitHub events, or API calls |
+| Effort controls | 1 | `/effort` and `/fast` for speed vs. reasoning depth |
+| Agent SDK | 4 | Embed Claude Code agents in your own apps |
 
 > **Scaling tip:** As your CLAUDE.md files grow across projects, [RuleMetric](https://github.com/nickyeager/momento-mori) helps manage instructions at scale — write once, convert to any AI tool format, and track what actually works.
 
@@ -162,6 +169,7 @@ This course uses ngrok AI Gateway to route LLM calls to multiple providers throu
 ## Resources
 
 - [Claude Code Documentation](https://docs.anthropic.com/en/docs/claude-code)
+- [Claude Agent SDK](https://docs.anthropic.com/en/docs/agent-sdk) — Embed Claude Code agents in your own apps (Python + TypeScript)
 - [Claude How-To Guide](https://github.com/luongnv89/claude-howto) — Visual tutorials and templates for all Claude Code features
 - [Context Engineering Intro](https://github.com/coleam00/context-engineering-intro) — Context engineering templates and PRP workflow
 - [ngrok AI Gateway Docs](https://ngrok.com/docs/ai-gateway/)

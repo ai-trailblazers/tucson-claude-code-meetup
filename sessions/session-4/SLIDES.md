@@ -375,16 +375,42 @@ By now you should have:
 
 ---
 
-## Slide 22: Where to Go Next
+## Slide 22: Where to Go Next — Routines & Beyond
 
-**Extend MeetupBot:**
+### Routines (new!) — Cloud automations without your laptop
+
+| Trigger | Example |
+|---|---|
+| **Scheduled** | "Every Monday, suggest this week's meetup topic" |
+| **GitHub event** | "When a PR opens, review event plan changes" |
+| **API call** | "When RSVP webhook fires, update attendee estimate" |
+
+Available on Pro (5/day), Max (15/day), Team/Enterprise (25/day).
+
+### Claude Agent SDK — embed agents in your apps
+
+```bash
+pip install claude-agent-sdk          # Python
+npm install @anthropic-ai/claude-agent-sdk  # TypeScript
+```
+
+### Extend MeetupBot:
 - MCP servers for Eventbrite, Google Calendar, Slack
 - More specialist subagents (budget-optimizer, sponsor-outreach)
-- Full automation: plan-to-publish pipeline
+- **Routines** to automate the feedback loop on a schedule
+- **Agent SDK** to embed MeetupBot in your own tools
 
-**Apply the patterns to any project:**
-- Internal tools, content pipelines, code review agents
-- Same architecture, different domain
+---
+
+## Slide 22b: Current Claude Models (April 2026)
+
+| Model | Best For | Context |
+|---|---|---|
+| **Opus 4.7** | Complex reasoning, long autonomy | 1M tokens |
+| **Sonnet 4.6** | Fast, capable general use | 1M tokens |
+| **Haiku 4.5** | Quick tasks, triage, routing | 200K tokens |
+
+**Claude Code surfaces:** CLI, Desktop (Mac/Windows), Web (claude.ai/code), VS Code, JetBrains
 
 ---
 
@@ -407,9 +433,11 @@ Better **context**, better **architecture**, better **feedback** >>>> smarter mo
 
 **Resources:**
 - [Claude Code Docs](https://docs.anthropic.com/en/docs/claude-code)
-- [ngrok AI Gateway](https://ngrok.com/ai-gateway)
-- [Context Engineering Guide](https://www.anthropic.com/research/building-effective-agents)
-- Course Repo: `github.com/...`
+- [Claude Agent SDK](https://docs.anthropic.com/en/docs/agent-sdk)
+- [ngrok AI Gateway](https://ngrok.com/docs/ai-gateway/)
+- [Context Engineering Best Practices](https://www.philschmid.de/context-engineering)
+- [Claude Code Best Practices](https://www.anthropic.com/engineering/claude-code-best-practices)
+- Course Repo: `github.com/nickyeager/tucson-claude-code-meetup`
 
 **Questions?**
 

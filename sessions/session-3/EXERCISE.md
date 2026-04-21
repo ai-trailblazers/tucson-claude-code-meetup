@@ -29,6 +29,7 @@ Create `.claude/agents/schedule-optimizer.md`:
 name: schedule-optimizer
 description: "Schedule optimization specialist. Proactively optimizes any meetup schedule for speaker conflicts, break intervals, and audience energy. Reads event plans and speaker data to produce conflict-free schedules with reasoning."
 tools: Read, Grep, Glob
+initialPrompt: "Read the event plan and speaker data, then produce a schedule optimization report."
 ---
 
 You are a meetup schedule optimization specialist.
@@ -88,6 +89,7 @@ Create `.claude/agents/comms-reviewer.md`:
 name: comms-reviewer
 description: "Communications quality reviewer. Proactively reviews any drafted email or announcement for tone, completeness, and missing information. Scores 1-10 and suggests specific improvements."
 tools: Read, Grep, Glob
+initialPrompt: "Read the drafted communication and produce a quality review with a score and specific suggestions."
 ---
 
 You are a communications quality reviewer for AI developer meetup announcements.
@@ -170,6 +172,10 @@ chmod +x .claude/hooks/auto-review.sh
 > - `Stop` — runs when Claude finishes responding
 >
 > Each hook is a shell script that receives JSON on stdin with details about the event. The script below is a `PostToolUse` hook that fires on every `Write` tool use.
+>
+> **Conditional hooks (new):** You can make hooks more targeted with an `if` field. For example, to only fire on git commits: `"if": "Bash(git commit *)"`. This prevents the hook from firing on every Bash call.
+>
+> **More hook events:** Beyond the four above, Claude Code now also supports `CwdChanged` (working directory changes) and `FileChanged` (file modifications).
 
 Register the hook in `.claude/settings.local.json`:
 

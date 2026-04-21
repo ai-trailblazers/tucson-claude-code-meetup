@@ -302,7 +302,11 @@ If you got through all five, that's the full system. If you got through three or
 
 So where do you go from here?
 
-You can extend MeetupBot. Add MCP servers for Eventbrite, Google Calendar, Slack. Add more specialist subagents -- budget optimization, sponsor outreach. Build a full plan-to-publish automation pipeline.
+First — Routines. This is brand new. Claude Code now has cloud-based automations that run without your laptop. You define a prompt, connect a repo, and set a trigger. Scheduled cadences — 'every Monday, suggest this week's meetup topic.' GitHub events — 'when a PR is opened, review the changes.' API calls — 'when our RSVP webhook fires, update the attendee estimate.' Pro plan gets 5 per day, Max gets 15. It's the natural next step for MeetupBot — automate the feedback loop on a schedule.
+
+Second — the Claude Agent SDK. Formerly called the Claude Code SDK, it's available in Python and TypeScript. It lets you embed everything you've learned — subagents, tool permissions, hooks — into your own applications. `pip install claude-agent-sdk` or `npm install @anthropic-ai/claude-agent-sdk`.
+
+You can extend MeetupBot. Add MCP servers for Eventbrite, Google Calendar, Slack. Add more specialist subagents — budget optimization, sponsor outreach. Use Routines to automate the whole thing. Build with the Agent SDK to embed it in your own tools.
 
 Or take these patterns to a completely different project. Internal tools. Content pipelines. Code review agents. The architecture is the same. The domain is just a variable.
 
@@ -330,7 +334,9 @@ The meta-lesson across all four sessions: better context, better architecture, b
 ## Slide 24: Thank You
 **[~1 min]**
 
-Resources are on the screen. Claude Code docs, ngrok AI Gateway, the context engineering guide, and the course repo with everything we built.
+Resources are on the screen. Claude Code docs, the Agent SDK, ngrok AI Gateway, the context engineering guide, and the course repo with everything we built.
+
+Quick reference on current models — Opus 4.7 is the latest, a million-token context, best for complex reasoning. Sonnet 4.6 is fast and capable for general use. Haiku 4.5 is cheap and fast for triage and routing. That model routing we talked about in Session 3? Now you know the current lineup.
 
 [PAUSE]
 

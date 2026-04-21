@@ -42,11 +42,13 @@ Total time: ~60 minutes (25 min instruction, 30 min exercise, 5 min wrap-up)
 ## Slide 4: What is Claude Code?
 **Time: 2 min**
 
-"Claude Code is not a chatbot. It's not autocomplete. It's an agent that lives in your terminal and understands your entire project."
+"Claude Code is not a chatbot. It's not autocomplete. It's an agent that understands your entire project."
+
+"It lives in your terminal, but also runs as a Desktop app, a web app at claude.ai/code, and inside VS Code and JetBrains. We'll use the CLI tonight, but everything we learn works across all of those surfaces."
 
 "It reads your files, edits them, runs commands, searches your codebase. And the key thing — it follows rules you write in a file called CLAUDE.md. We'll get to that in a minute."
 
-"Think of it as a really skilled junior developer who never gets tired, reads incredibly fast, but needs clear instructions to do good work. The quality of your instructions determines the quality of the output. That's the whole game."
+"It's powered by Claude Opus 4.7 — a million-token context window. That means it can hold your entire codebase in memory at once. Think of it as a really skilled junior developer who never gets tired, reads incredibly fast, but needs clear instructions to do good work. The quality of your instructions determines the quality of the output. That's the whole game."
 
 **Transition:** "Let's get it installed."
 
@@ -153,9 +155,9 @@ claude
 
 "Claude Code asks permission before running commands. That's good — you want that guardrail. But if it's asking you to approve `git commit` for the twentieth time, it gets old."
 
-"You can pre-approve commands in `.claude/settings.local.json`. Add git, python, whatever you trust. This stays local to your machine — it doesn't get committed to the repo."
+"There are three permission modes. Interactive is the default — approve everything. Allow-list means you pre-approve specific commands in `.claude/settings.local.json`. And there's a new one called Auto Mode — press Shift+Tab to toggle it. A classifier figures out which actions are safe and which are risky. Safe ones run automatically, risky ones still get blocked. It's a nice middle ground."
 
-"For tonight, interactive mode is fine. You'll set up allow lists during build time if you want."
+"For tonight, interactive mode or Auto Mode are both fine. You'll set up allow lists during build time if you want."
 
 **Transition:** "Now let's talk about how we're actually connecting to the AI models."
 
@@ -256,6 +258,8 @@ claude
 
 "For us, 'always return JSON' is an IMPORTANT rule. 'Use a friendly tone' is not."
 
+"One more thing — speed and effort controls. Type `/fast` to toggle fast mode — same model, faster output. Type `/effort low` for quick tasks or `/effort high` for complex reasoning. You can even say 'think hard' or 'ultrathink' in a prompt to trigger deeper reasoning for one turn. These are good to know but don't overthink them tonight."
+
 **Transition:** "A few more tips before I set you loose."
 
 ---
@@ -337,6 +341,8 @@ claude
 "One more thing — as you build more projects with CLAUDE.md files, there's a tool called RuleMetric that lets you manage instructions across tools. Write once, convert to CLAUDE.md, Cursor rules, Copilot instructions, whatever. We won't use it in this course but it's worth knowing about as you scale up."
 
 "You just built your first agent feature. That's not nothing. Nice work tonight."
+
+"Oh — one more tip. Between sessions, try typing `/powerup` in Claude Code. It launches interactive lessons that teach you features through animated demos. Great way to discover things you didn't know existed."
 
 [PAUSE] "Questions before we wrap? ... Great. See you at Session 2. And commit your work before you close your laptop."
 

@@ -57,7 +57,15 @@ An AI agent that helps run a tech meetup:
 
 # What is Claude Code?
 
-An AI coding assistant that lives **in your terminal**.
+An AI coding assistant that lives **where you work**.
+
+| Surface | How |
+|---|---|
+| **CLI** | Terminal-native (what we're using tonight) |
+| **Desktop** | Mac + Windows app |
+| **Web** | `claude.ai/code` |
+| **VS Code** | Native extension |
+| **JetBrains** | Native plugin |
 
 | Capability | What it does |
 |---|---|
@@ -68,7 +76,7 @@ An AI coding assistant that lives **in your terminal**.
 | **Follows rules** | Reads `CLAUDE.md` every conversation |
 | **Extends** | Custom commands, subagents, hooks |
 
-Not a chatbot. Not an autocomplete. A **coding agent**.
+Powered by **Claude Opus 4.7** — 1M token context window. Not a chatbot. A **coding agent**.
 
 ---
 
@@ -240,11 +248,11 @@ Claude Code asks before running commands. You can pre-configure trust.
 
 ### Modes:
 
-| Mode | Behavior |
-|---|---|
-| **Interactive** | Asks permission each time |
-| **Allow list** | Pre-approved commands run automatically |
-| **Dangerously skip** | Skips all prompts (not recommended) |
+| Mode | How | Best For |
+|---|---|---|
+| **Interactive** (default) | Approve each action | Learning, auditing |
+| **Auto Mode** (`Shift+Tab`) | Classifier auto-approves safe actions | Development flow |
+| **Allow list** | Pre-configured in settings.json | Teams, CI/CD |
 
 ---
 
@@ -422,6 +430,11 @@ Words that change how Claude prioritizes instructions.
 ### Use sparingly.
 
 If everything is `IMPORTANT`, nothing is. Reserve these for rules that **truly matter**.
+
+### Speed & effort controls:
+- `/fast` — toggle fast mode (same model, faster output)
+- `/effort low|medium|high` — control reasoning depth
+- "think hard" or "ultrathink" in a prompt — deeper reasoning for one turn
 
 ---
 

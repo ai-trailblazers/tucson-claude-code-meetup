@@ -162,9 +162,11 @@ Build the agent, then test it against the announcement from session 2.
 
 "Now hooks. If subagents are your specialists, hooks are your automation layer. Hooks are code that runs when things happen inside Claude Code."
 
-"Four hook events. PreToolUse fires before a tool executes — you could block dangerous operations or validate inputs. PostToolUse fires after — perfect for triggering reviews, logging, or notifications. UserPromptSubmit fires when the user sends a message — you could validate or transform input. Stop fires when the agent finishes responding — good for cleanup or summaries."
+"Six hook events. PreToolUse fires before a tool executes — you could block dangerous operations or validate inputs. PostToolUse fires after — perfect for triggering reviews, logging, or notifications. UserPromptSubmit fires when the user sends a message — you could validate or transform input. Stop fires when the agent finishes responding — good for cleanup or summaries. And two new ones: CwdChanged fires when the working directory changes, and FileChanged fires when a file is modified."
 
 "Every hook receives JSON on stdin with the event details — tool name, file path, whatever the context is. Your script reads that JSON and decides what to do."
+
+"And here's a nice improvement — conditional hooks. You can add an `if` field that targets specific actions. For example, `if: Bash(git commit *)` means the hook only fires on git commits, not every single Bash call. Saves a lot of noise."
 
 "Think of this as CI/CD for your agent workflow. Same concept — automated checks triggered by events."
 
@@ -207,6 +209,10 @@ Run through each step. Let students see the chain.
 **Time: 1 min**
 
 "Quick aside on MCP — Model Context Protocol. This is the standard interface for connecting Claude Code to external services. Databases, APIs, monitoring tools."
+
+"A recent improvement: Tool Search. MCP used to load every tool into context upfront, which burned tokens. Now it lazy-loads tools on demand — up to 95% reduction in context usage. That matters when you're connecting to services with dozens of endpoints."
+
+"There's also Channels — a research preview where MCP servers can push messages into your Claude session. Imagine Telegram or Discord messages flowing directly into your agent conversation. Early days, but powerful."
 
 "For MeetupBot in production, you could wire up Eventbrite to auto-publish events, Google Calendar for venue availability, Slack for posting announcements. We're not building these today, but the architecture supports it. Just know it exists."
 

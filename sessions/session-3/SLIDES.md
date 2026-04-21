@@ -239,8 +239,15 @@ ngrok AI Gateway handles routing — you set the rules.
 | `PostToolUse` | After a tool completes | Trigger reviews, log actions, notify |
 | `UserPromptSubmit` | When user sends a message | Validate/transform input, add context |
 | `Stop` | When agent finishes responding | Summarize, commit, clean up |
+| `CwdChanged` | When working directory changes | Track context switches |
+| `FileChanged` | When a file is modified | React to external changes |
 
 Each hook receives **JSON on stdin** with event details (tool name, file path, etc.).
+
+**Conditional hooks** (new): target specific actions with `if` field:
+```json
+{ "matcher": "Bash", "if": "Bash(git commit *)", "hooks": [...] }
+```
 
 Think of hooks as **CI/CD for your agent workflow**.
 
@@ -343,6 +350,10 @@ Claude Code ──► MCP Server ──► External Service
                                   ├── Slack
                                   └── Database
 ```
+
+**Recent improvements:**
+- **Tool Search** — lazy-loads tools on demand, up to 95% context savings
+- **Channels** (preview) — MCP servers push messages into your session (Telegram, Discord, webhooks)
 
 For MeetupBot in production, MCP could connect:
 - **Eventbrite** — auto-publish events

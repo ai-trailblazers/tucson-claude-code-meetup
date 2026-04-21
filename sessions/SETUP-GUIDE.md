@@ -93,8 +93,8 @@ Your config file will look like:
 {
   "baseUrl": "https://api.anthropic.com/v1",
   "apiKey": "sk-ant-your-key-here",
-  "defaultModel": "claude-sonnet-4-5-20250514",
-  "fallbackModel": "claude-haiku-4-5-20251001"
+  "defaultModel": "claude-sonnet-4-6",
+  "fallbackModel": "claude-haiku-4-5"
 }
 ```
 
