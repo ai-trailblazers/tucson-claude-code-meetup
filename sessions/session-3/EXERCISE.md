@@ -20,6 +20,8 @@ Now do ALL of the following in one response:
 
 Now let's fix this with specialists.
 
+**Design principle: feature-specific agents, not generic roles.** Don't create a "Backend Engineer" or "Writer" agent — create a "schedule-optimizer" and "comms-reviewer" that each solve one specific problem. Generic role agents bloat context with irrelevant capabilities. Feature-specific agents stay focused and produce better output.
+
 ## Step 2: Build the Schedule Optimizer Subagent (15 min)
 
 Create `.claude/agents/schedule-optimizer.md`:
@@ -29,6 +31,7 @@ Create `.claude/agents/schedule-optimizer.md`:
 name: schedule-optimizer
 description: "Schedule optimization specialist. Proactively optimizes any meetup schedule for speaker conflicts, break intervals, and audience energy. Reads event plans and speaker data to produce conflict-free schedules with reasoning."
 tools: Read, Grep, Glob
+denied_tools: Edit, Write, Bash
 initialPrompt: "Read the event plan and speaker data, then produce a schedule optimization report."
 ---
 
@@ -75,6 +78,8 @@ WARNINGS: {any remaining issues}
 - Prefer 30-min talk slots and 15-min breaks unless the event format specifies otherwise
 ```
 
+**Why `denied_tools`?** Notice the `denied_tools: Edit, Write, Bash` line. This is a critical safety pattern: the schedule optimizer should *analyze and report*, not modify files directly. By denying write-capable tools, you guarantee this agent can't accidentally overwrite your event plan or run arbitrary commands. Each specialist gets only the tools it needs — the principle of least privilege applied to AI agents.
+
 Test it manually:
 ```
 Use the schedule-optimizer agent to optimize the schedule for events/prompt-engineering-vs-context-engineering.json
@@ -89,6 +94,7 @@ Create `.claude/agents/comms-reviewer.md`:
 name: comms-reviewer
 description: "Communications quality reviewer. Proactively reviews any drafted email or announcement for tone, completeness, and missing information. Scores 1-10 and suggests specific improvements."
 tools: Read, Grep, Glob
+denied_tools: Edit, Write, Bash
 initialPrompt: "Read the drafted communication and produce a quality review with a score and specific suggestions."
 ---
 

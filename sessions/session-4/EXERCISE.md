@@ -19,7 +19,24 @@ Create `briefs/rag-workshop.md`:
 **Constraints:** Venue must have WiFi and power outlets for all attendees
 ```
 
-## Step 2: Run 3 Parallel Subagents (15 min)
+## Step 2: Triage the Brief (5 min)
+
+Before throwing the full pipeline at every request, smart agent systems classify complexity first. Triage the brief to decide how much effort to invest.
+
+```
+Read briefs/rag-workshop.md and classify this event brief:
+
+COMPLEXITY TRIAGE:
+- Simple (single talk, <20 attendees, no constraints) -> run 1 variant, skip parallel agents
+- Medium (workshop/panel, 20-60 attendees, some constraints) -> run 2 variants
+- Complex (multi-track, 60+ attendees, hard constraints, multiple speakers) -> run 3 variants
+
+Output the classification and your reasoning. What constraints make this brief non-trivial?
+```
+
+**Why triage?** Running 3 parallel subagents is expensive. For a simple "pizza and lightning talks" meetup, one plan is plenty. Triage prevents over-engineering simple events while ensuring complex ones get the full treatment. The brief above should classify as **Medium** or **Complex** — proceed with 3 variants.
+
+## Step 3: Run 3 Parallel Subagents (15 min)
 
 Ask Claude to run 3 competing variants in parallel, each with a different strategy:
 
@@ -68,21 +85,27 @@ Run all 3 in parallel using subagents.
 
 > **What's happening under the hood:** Claude Code uses git worktrees to give each subagent an isolated copy of your repo. They run simultaneously without stepping on each other's files. You don't need to manage the git branches — Claude handles it.
 
-## Step 3: Evaluate Each Variant (10 min)
+## Step 4: Adversarial Evaluation (10 min)
 
-Use your Session 3 subagents to score each variant:
+Now the evaluators become **adversaries**. Their job is to *break* each variant, not praise it. This is the Generator -> Evaluator pattern: one agent creates, another tries to find every flaw.
+
+Use your Session 3 subagents to attack each variant:
 
 ```
-Use the schedule-optimizer agent to evaluate all 3 schedule variants:
+Use the schedule-optimizer agent to evaluate all 3 schedule variants. Be adversarial —
+your job is to find every conflict, energy dip, and logistics problem:
 - schedules/rag-workshop-v1.md
 - schedules/rag-workshop-v2.md
 - schedules/rag-workshop-v3.md
 
-Then use the comms-reviewer agent to score all 3 announcements:
+Then use the comms-reviewer agent to ruthlessly score all 3 announcements.
+No generosity — if something is missing or weak, score it down:
 - comms/rag-workshop-v1-announcement.md
 - comms/rag-workshop-v2-announcement.md
 - comms/rag-workshop-v3-announcement.md
 ```
+
+**Key insight:** The evaluator agents have `denied_tools: Edit, Write, Bash` from Session 3 — they can critique but not fix. This separation of concerns (generator creates, evaluator judges) prevents the evaluator from silently "fixing" problems instead of surfacing them.
 
 Record the scores:
 
@@ -92,7 +115,7 @@ Record the scores:
 | V2 Deep-dive | ___/10 | ___/10 | ___/20 |
 | V3 Workshop-lab | ___/10 | ___/10 | ___/20 |
 
-## Step 4: Select the Winner (5 min)
+## Step 5: Select the Winner (5 min)
 
 ```
 Based on the evaluation scores, select the best variant for the RAG Workshop.
@@ -106,7 +129,7 @@ Explain why this variant won and what elements from the other variants could imp
 
 **Discussion:** Why did the winner win? Would a different audience or format change the result? This is the key insight — non-deterministic generation + evaluation outperforms a single attempt.
 
-## Step 5: Build the Post-Event System (15 min)
+## Step 6: Build the Post-Event System (15 min)
 
 Create the `/post-event` slash command:
 
@@ -129,7 +152,9 @@ to improve future event planning. Include fields like: actualAttendees,
 feedbackHighlights, improvementAreas, venueRating, formatRating.
 ```
 
-## Step 6: Close the Feedback Loop (5 min)
+## Step 7: Close the Feedback Loop — Fresh Context (5 min)
+
+**Important pattern:** When we plan the next event, the agent reads past-event files from disk — it does NOT "remember" the previous event from conversation history. This is deliberate. LLM memory drifts and hallucinates. Files don't. Persist state through files, not conversation context.
 
 Test the full loop — create a mock post-event entry, then plan a new event:
 
@@ -201,6 +226,42 @@ cp -r ../../solution/session-4/.claude .
 1. Create a `/compare-variants` command that generates a side-by-side comparison table of multiple event plan variants
 2. Add a `post-event-analyzer` subagent that reads all past events and identifies trends (e.g., "workshops consistently get higher attendance than talks")
 3. Build a `/plan-series` command that plans a 3-month meetup series with progressive topics, avoiding speaker and venue repetition
+
+## Where to Go Next: Workflow DAGs
+
+Everything you've built — slash commands, PRPs, subagents, hooks, parallel variants, feedback loops — are the building blocks of **workflow DAGs** (Directed Acyclic Graphs). In production agent systems, these building blocks get composed into declarative pipelines:
+
+```yaml
+# What a production MeetupBot workflow could look like
+nodes:
+  - id: triage
+    type: prompt
+    model: claude-haiku-4-5
+    systemPrompt: "Classify event brief complexity..."
+
+  - id: generate-variants
+    type: prompt
+    model: claude-sonnet-4-6
+    depends_on: [triage]
+    when: "triage.output.complexity != 'simple'"
+    allowed_tools: [Read, Write, Glob]
+    denied_tools: [Bash]
+
+  - id: adversarial-review
+    type: prompt
+    model: claude-opus-4-7
+    depends_on: [generate-variants]
+    allowed_tools: [Read, Grep, Glob]
+    denied_tools: [Edit, Write, Bash]
+    systemPrompt: "Your job is to BREAK what was generated..."
+
+  - id: select-winner
+    type: prompt
+    depends_on: [adversarial-review]
+    when: "adversarial-review.output.passCount > 0"
+```
+
+The patterns transfer: **triage -> generate -> adversarially evaluate -> select**. You've done this manually across Sessions 1-4. Workflow DAGs automate the orchestration so it runs the same way every time.
 
 ## Congratulations!
 
