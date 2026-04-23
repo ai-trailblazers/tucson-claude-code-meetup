@@ -4,13 +4,22 @@ A hands-on, 4-session course where you build **MeetupBot** — an AI-powered age
 
 ## Prerequisites
 
+### Bootcamp Requirements
+- **GitHub account** — create one at https://github.com/signup if you don't have one
+- **AI-Trailblazers meetup membership** — join the group to get access to resources and stay connected
+- **Claude Code account** — you need Claude Max or API access. If you don't have one, we'll provide access through the AI-Trailblazers meetup (we're subsidizing accounts for participants)
+- **Consent to filming** — this bootcamp will be recorded and shared with the community
+
+### Technical Setup
 - Terminal/command line access
-- Node.js installed
+- Node.js installed (v18+)
 - Git installed (we'll cover the basics)
 - Text editor (VS Code recommended — has a Claude Code extension!)
 - ngrok account with AI Gateway access (or a direct LLM provider API key as fallback)
 
 > **Claude Code runs everywhere:** CLI (terminal), Desktop app (Mac/Windows), Web (`claude.ai/code`), VS Code extension, and JetBrains plugin. We use the CLI in this course, but all features work across all surfaces.
+
+See [SETUP-GUIDE.md](sessions/SETUP-GUIDE.md) for detailed installation instructions.
 
 ### Verify Your Setup
 

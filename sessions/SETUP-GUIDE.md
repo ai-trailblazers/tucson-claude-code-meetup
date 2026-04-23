@@ -2,7 +2,25 @@
 
 Complete this before Session 1 to avoid spending exercise time on installation.
 
-## 1. Install Node.js (v18+)
+## Before You Start — Bootcamp Requirements
+
+### 1. GitHub Account
+You need a GitHub account to participate. If you don't have one, create one at https://github.com/signup (free).
+
+### 2. Join the AI-Trailblazers Meetup Group
+Join the AI-Trailblazers meetup group if you haven't already. This is how we coordinate sessions, share resources, and keep in touch after the bootcamp.
+
+### 3. Claude Code Account
+You need a Claude Code account (Claude Max or API access) to use Claude Code. If you don't have one yet, we'll provide access through the AI-Trailblazers meetup — we're subsidizing accounts for bootcamp participants. Reach out to the organizers if you need an account set up before Session 1.
+
+### 4. Consent to Filming
+This bootcamp will be filmed. By attending, you consent to being recorded. The recordings will be shared with the AI-Trailblazers community. If you have concerns, reach out to the organizers before the event.
+
+---
+
+## Environment Setup
+
+### 1. Install Node.js (v18+)
 
 **macOS:**
 ```bash
@@ -20,7 +38,7 @@ sudo apt-get install -y nodejs
 
 Verify: `node --version` (should show v18 or later)
 
-## 2. Install Git
+### 2. Install Git
 
 **macOS:** `brew install git` or install Xcode Command Line Tools
 **Windows:** Download from https://git-scm.com/
@@ -28,7 +46,7 @@ Verify: `node --version` (should show v18 or later)
 
 Verify: `git --version`
 
-## 3. Install Claude Code
+### 3. Install Claude Code
 
 ```bash
 npm install -g @anthropic-ai/claude-code
@@ -36,7 +54,7 @@ npm install -g @anthropic-ai/claude-code
 
 Verify: `claude --version`
 
-## 4. Set Up Your LLM Provider
+### 4. Set Up Your LLM Provider
 
 You need an API key to use Claude Code's slash commands with external LLMs. Choose ONE of the options below.
 
@@ -108,7 +126,7 @@ Your config file will look like:
 
 **All exercises work identically regardless of which option you choose.** The agent patterns are the same — only the base URL and API key differ.
 
-## 5. Choose a Text Editor
+### 5. Choose a Text Editor
 
 VS Code is recommended: https://code.visualstudio.com/
 
