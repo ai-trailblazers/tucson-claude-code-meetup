@@ -500,7 +500,7 @@ Raise your hand if you get stuck. Help your neighbor first.
 - **Comms system** — draft emails, social posts, announcements
 - Moving from single commands to **coordinated workflows**
 
-> "Session 1 gave you the tools. Session 2 teaches you to think in systems."
+> Session 1: tools working. Session 2: wiring them into a pipeline.
 
 ---
 

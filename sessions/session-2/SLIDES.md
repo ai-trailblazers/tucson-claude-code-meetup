@@ -8,7 +8,7 @@
 
 ### Session 2: Context Engineering — Blueprints Beat Prompts
 
-> "Stop prompting. Start engineering."
+*From one-off prompts to reusable systems*
 
 ---
 
@@ -232,7 +232,7 @@ Watch Claude:
 4. Create `.claude/commands/draft-speaker-outreach.md`
 5. Validate against the event plan schema
 
-**Key observation:** Claude isn't guessing. It's following a blueprint. That's the difference.
+**Key observation:** Claude isn't guessing. It's following a blueprint you reviewed first.
 
 ---
 
@@ -391,4 +391,3 @@ Right now, one agent does everything. Next session:
 3. **Composable commands via structured JSON**
    JSON schemas enable data flow between agent capabilities. Structure scales.
 
-> "The best prompt is no prompt — it's a system."

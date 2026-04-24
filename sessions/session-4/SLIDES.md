@@ -8,7 +8,7 @@
 
 ### Session 4: Parallel Agents & The Feedback Loop
 
-> "Non-determinism is a feature, not a bug"
+*Generate multiple variants, score them, pick the best one*
 
 ---
 
@@ -290,7 +290,7 @@ Before generating the plan, read all files in data/past-events/
 for lessons learned. Apply them to venue, format, and schedule.
 ```
 
-**Context engineering in action.**
+One line in your slash command closes the loop.
 
 ---
 
@@ -421,13 +421,13 @@ npm install @anthropic-ai/claude-agent-sdk  # TypeScript
 | Session | Key Lesson |
 |---|---|
 | Session 1 | CLAUDE.md rules shape agent behavior |
-| Session 2 | Context > prompts -- structure beats cleverness |
-| Session 3 | Specialists > monoliths -- compose expert agents |
-| Session 4 | Non-determinism + evaluation > single attempts |
+| Session 2 | Complete context files beat clever one-off prompts |
+| Session 3 | Focused agents per task beat one agent doing everything |
+| Session 4 | Multiple variants + scoring beat hoping the first attempt is good |
 
-**The meta-lesson:**
+**The constant across all 4 sessions:**
 
-Better **context**, better **architecture**, better **feedback** >>>> smarter models
+Same model. What changed was the context, the structure, and the feedback.
 
 ---
 

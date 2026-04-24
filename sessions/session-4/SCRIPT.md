@@ -11,11 +11,7 @@ Welcome back to the final session. Session 4. We made it.
 
 Over the last three sessions, you've gone from writing your first CLAUDE.md to building a full agent system with slash commands, subagents, and automated quality gates.
 
-Today we're going to do something that might sound a little wild: we're going to take the non-determinism of LLMs -- the thing that usually frustrates people -- and turn it into a superpower.
-
-[PAUSE]
-
-"Non-determinism is a feature, not a bug." By the end of this session, you'll believe that.
+Today we're going to take the non-determinism of LLMs — the thing that usually frustrates people — and use it deliberately. Generate multiple variants, score them, pick the best one.
 
 ---
 
@@ -121,7 +117,7 @@ Now here's where Sessions 3 pays off. Remember `schedule-optimizer` and `comms-r
 
 We're going to point them at all three variants. Schedule-optimizer scores each schedule for quality, time allocation, and flow. Comms-reviewer scores each announcement for clarity, tone, and completeness.
 
-Build once, reuse everywhere. That's the power of composable architecture.
+You already built the evaluators — now you're just pointing them at three things instead of one.
 
 ---
 
@@ -201,11 +197,9 @@ After feedback: "Tech Hub East -- because Maker Space WiFi was rated 3 out of 10
 
 [PAUSE]
 
-Every single recommendation changed based on real data. The agent didn't get smarter. It got better context. That's the whole game.
+Every recommendation changed because the agent read the feedback file before planning. No retraining, no fine-tuning — just a line in plan-event.md that says 'read data/past-events/ first.'
 
-"Now here's the practical part — to make this actually work, you need to update your `/plan-event` command to read from `data/past-events/`. Just add a line to plan-event.md that says 'before generating the plan, read all files in data/past-events/ for lessons learned.' That's what closes the loop. Without that line, the feedback just sits there unused."
-
-Context engineering in action.
+"To wire this up, you add that line to your `/plan-event` command. Without it, the feedback just sits there unused. With it, every new plan gets better automatically."
 
 ---
 
@@ -334,7 +328,7 @@ Session 4: Non-determinism plus evaluation beats single attempts. And feedback l
 
 [PAUSE]
 
-The meta-lesson across all four sessions: better context, better architecture, better feedback matter more than smarter models. That's context engineering. That's what you now know how to do.
+The through-line across all four sessions: the model stayed the same. What changed was the context you gave it, how you structured the work, and whether you fed results back in.
 
 ---
 

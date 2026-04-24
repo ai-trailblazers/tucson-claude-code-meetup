@@ -202,7 +202,7 @@
 
 "And now it's validating — checking that the commands reference the right data files and schemas."
 
-"The key observation: Claude isn't guessing here. It's following a blueprint. That's the whole difference between prompt engineering and context engineering. Structure beats cleverness."
+"The key observation: Claude isn't guessing. It's following a blueprint you reviewed before any code got written."
 
 > **Common question:** "What if the PRP is wrong? Do I have to regenerate the whole thing?"
 > **Answer:** "No! You can edit the PRP directly. It's just a markdown file. Fix the part that's wrong and re-run /execute-prp. That's another benefit of the two-step process."

@@ -48,7 +48,7 @@ Total time: ~65 minutes (30 min instruction, 30 min exercise, 5 min wrap-up)
 
 "It reads your files, edits them, runs commands, searches your codebase. And the key thing — it follows rules you write in a file called CLAUDE.md. We'll get to that in a minute."
 
-"It's powered by Claude Opus 4.7 — a million-token context window. That means it can hold your entire codebase in memory at once. Think of it as a really skilled junior developer who never gets tired, reads incredibly fast, but needs clear instructions to do good work. The quality of your instructions determines the quality of the output. That's the whole game."
+"It's powered by Claude Opus 4.7 — a million-token context window. That means it can hold your entire codebase in memory at once. Think of it as a really skilled junior developer who never gets tired, reads incredibly fast, but needs clear instructions to do good work. The quality of your instructions determines the quality of the output."
 
 **Transition:** "Let's get it installed."
 
@@ -110,7 +110,7 @@ claude
 
 "The output format says 'all event data must be structured JSON.' The schema lists every field we expect — eventName, suggestedSpeakers, schedule slots, estimated cost. The personality says 'friendly, organized, opinionated about good events.'"
 
-"Notice how specific this is. We're not saying 'be helpful.' We're defining camelCase JSON fields and exact data locations. Specificity is everything."
+"Notice how specific this is. We're not saying 'be helpful.' We're defining camelCase JSON fields and exact data locations. That level of specificity is what makes the difference."
 
 "By the way — if you're staring at a blank file wondering where to start, there's a starter template in the repo at `templates/CLAUDE-starter.md`. It has all these sections filled out for MeetupBot. You can copy it and customize, or write your own from scratch."
 
@@ -123,7 +123,7 @@ claude
 
 "Look at this table. On the left, freeform text. 'The event could be on March 15th...' On the right, a clean JSON date field."
 
-"Freeform is fine if a human is reading it. But if another agent needs to consume this output — and in Session 3, it will — you need structure. JSON schemas make agents reliable. Full stop."
+"Freeform is fine if a human is reading it. But if another agent needs to consume this output — and in Session 3, it will — you need structure. JSON schemas make agents reliable."
 
 "This is one of those things that feels like extra work now but saves you hours later. Trust me on this one."
 
@@ -140,7 +140,7 @@ claude
 3. Ask the same question — note the structured JSON response
 4. Point out: "Same question, completely different output. The only thing that changed was CLAUDE.md."
 
-"See that? Before CLAUDE.md, you get a nice essay. After CLAUDE.md, you get JSON that a machine can parse. That's the power of context engineering."
+"See that? Before CLAUDE.md, you get a nice essay. After CLAUDE.md, you get JSON that a machine can parse. Same model, same question — the only thing that changed was the context file."
 
 [PAUSE] "Any questions about CLAUDE.md before we move on? This is the foundation — everything else builds on it."
 
@@ -321,7 +321,7 @@ claude
 
 "We'll cover INITIAL.md — that's your project bootstrap file. PRPs — prompt-reusable patterns. And we'll build a comms system so MeetupBot can draft emails and social posts."
 
-"Session 1 gave you the tools. Session 2 teaches you to think in systems."
+"Session 1 was about getting the tools working. Session 2 is about wiring them together into a pipeline."
 
 **Transition:** "Quick recap and we're out."
 

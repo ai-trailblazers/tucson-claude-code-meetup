@@ -142,9 +142,7 @@ Build the agent, then test it against the announcement from session 2.
 
 "Let's put them side by side. Before — monolith — generic, surface-level, 'looks fine.' After — specialists — three conflicts detected, email scored 6 out of 10 with specific issues, focused and thorough."
 
-[PAUSE] "Same model. Same data. Different architecture. That's the lesson."
-
-"This is why companies that are good at AI aren't just picking better models — they're designing better architectures around the same models everyone else has access to."
+[PAUSE] "Same model. Same data. The only thing that changed was the architecture — one focused agent per task instead of one agent doing everything."
 
 ---
 
@@ -260,7 +258,7 @@ Run through each step. Let students see the chain.
 
 [PAUSE — count hands]
 
-"And the big one — can you see a visible quality improvement over the monolith approach? That's the whole point."
+"And the big one — can you see a visible quality improvement over the monolith approach?"
 
 "If you're not there yet, that's fine. The exercise files have the complete solutions. Catch up before next session."
 

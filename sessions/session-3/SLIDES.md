@@ -9,7 +9,7 @@
 ### Session 3: Subagents & Hooks
 **Specialists Beat Generalists**
 
-> "One agent doing everything = mediocre at everything"
+*Split one overloaded agent into focused specialists*
 
 ---
 
