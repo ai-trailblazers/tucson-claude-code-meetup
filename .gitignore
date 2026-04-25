@@ -1,0 +1,12 @@
+# OS files
+.DS_Store
+
+# API keys and credentials
+config/
+
+# Node
+node_modules/
+
+# Environment files
+.env
+.env.*

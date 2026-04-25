@@ -96,6 +96,23 @@ Your config file will look like:
 }
 ```
 
+**Verify your endpoint is secured:**
+```bash
+# This should succeed (authenticated request)
+curl -s https://your-gateway.ngrok.app/v1/models \
+  -H "Authorization: Bearer ngrok-ai-gw-your-key-here"
+
+# This should fail with 401 (no auth = rejected)
+curl -s https://your-gateway.ngrok.app/v1/models
+```
+
+If the second command returns data instead of an error, your endpoint is open — go back to the ngrok dashboard and make sure API key authentication is enabled.
+
+**Security:** Your config file contains an API key. Add `config/` to your `.gitignore` so it doesn't get committed:
+```bash
+echo "config/" >> .gitignore
+```
+
 **Note:** ngrok AI Gateway is a separate product from ngrok tunnels. You specifically need the "AI Gateway" feature, not a regular tunnel.
 
 ### Option C: Direct OpenAI API
