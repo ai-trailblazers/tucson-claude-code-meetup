@@ -61,7 +61,7 @@ An AI coding assistant that lives **where you work**.
 
 | Surface | How |
 |---|---|
-| **CLI** | Terminal-native (what we're using tonight) |
+| **CLI** | Terminal-native (what we're using this morning) |
 | **Desktop** | Mac + Windows app |
 | **Web** | `claude.ai/code` |
 | **VS Code** | Native extension |

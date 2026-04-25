@@ -9,9 +9,9 @@ Total time: ~65 minutes (30 min instruction, 30 min exercise, 5 min wrap-up)
 
 "Hey everyone, welcome to the Tucson Claude Code Meetup. I'm Nick Yeager — I build developer tools, and I've been deep in Claude Code for the past year building agents for my own projects. I organized this series because I kept finding patterns that worked really well and wanted to share them with other builders here in Tucson."
 
-"Tonight we're doing something fun — we're going to build an AI agent feature from scratch. Not a toy demo. An actual slash command that generates structured event plans. By the end of tonight, you'll have something working on your machine."
+"This morning we're doing something fun — we're going to build an AI agent feature from scratch. Not a toy demo. An actual slash command that generates structured event plans. By the end of this morning, you'll have something working on your machine."
 
-"This is Session 1 of four. Each session builds on the last, so by Session 4 you'll have a full agent with subagents, hooks, and a feedback loop. But tonight — fundamentals. Let's get into it."
+"This is Session 1 of four. Each session builds on the last, so by Session 4 you'll have a full agent with subagents, hooks, and a feedback loop. But this morning — fundamentals. Let's get into it."
 
 **Transition:** "First, let me show you the big picture."
 
@@ -26,14 +26,14 @@ Total time: ~65 minutes (30 min instruction, 30 min exercise, 5 min wrap-up)
 
 [PAUSE] "Quick show of hands — who here has used any AI coding tool before? ChatGPT, Copilot, Cursor, anything? Cool. And who's used Claude Code specifically? Great, we've got a mix. That's perfect."
 
-**Transition:** "So what are we actually building tonight?"
+**Transition:** "So what are we actually building this morning?"
 
 ---
 
 ## Slide 3: Today's Goal
 **Time: 1 min**
 
-"By the end of tonight, you'll type `/plan-event "Building RAG pipelines"` and get back structured JSON. A full event plan — date, speakers, agenda, logistics. All from a single command."
+"By the end of this session, you'll type `/plan-event "Building RAG pipelines"` and get back structured JSON. A full event plan — date, speakers, agenda, logistics. All from a single command."
 
 "To get there, we need to cover five things: git basics, Claude Code setup, CLAUDE.md, ngrok AI Gateway, and slash commands. Sounds like a lot, but each piece is small. They snap together like Legos."
 
@@ -46,7 +46,7 @@ Total time: ~65 minutes (30 min instruction, 30 min exercise, 5 min wrap-up)
 
 "Claude Code is not a chatbot. It's not autocomplete. It's an agent that understands your entire project."
 
-"It lives in your terminal, but also runs as a Desktop app, a web app at claude.ai/code, and inside VS Code and JetBrains. We'll use the CLI tonight, but everything we learn works across all of those surfaces."
+"It lives in your terminal, but also runs as a Desktop app, a web app at claude.ai/code, and inside VS Code and JetBrains. We'll use the CLI this morning, but everything we learn works across all of those surfaces."
 
 "It reads your files, edits them, runs commands, searches your codebase. And the key thing — it follows rules you write in a file called CLAUDE.md. We'll get to that in a minute."
 
@@ -86,7 +86,7 @@ claude
 
 "`git init` — start tracking. `git add -A` — select everything. `git commit -m` with a message — save it."
 
-"If you mess something up later tonight, you can always get back to a commit. That's why we commit early and often. It's your safety net."
+"If you mess something up later, you can always get back to a commit. That's why we commit early and often. It's your safety net."
 
 **Transition:** "Now for the most important file in any Claude Code project."
 
@@ -159,7 +159,7 @@ claude
 
 "There are three permission modes. Interactive is the default — approve everything. Allow-list means you pre-approve specific commands in `.claude/settings.local.json`. And there's a new one called Auto Mode — press Shift+Tab to toggle it. A classifier figures out which actions are safe and which are risky. Safe ones run automatically, risky ones still get blocked. It's a nice middle ground."
 
-"For tonight, interactive mode or Auto Mode are both fine. You'll set up allow lists during build time if you want."
+"For this morning, interactive mode or Auto Mode are both fine. You'll set up allow lists during build time if you want."
 
 **Transition:** "Now let's talk about how we're actually connecting to the AI models."
 
@@ -174,7 +174,7 @@ claude
 
 "Think of it like a reverse proxy for AI. Same idea as putting nginx in front of your web servers, but for language models."
 
-[PAUSE] "Quick note — ngrok is actually sponsoring this meetup series, which is awesome. They're giving everyone gateway access tonight."
+[PAUSE] "Quick note — ngrok is actually sponsoring this meetup series, which is awesome. They're giving everyone gateway access today."
 
 **Transition:** "Let me show you what it can actually do."
 
@@ -198,7 +198,7 @@ claude
 1. Create `config/ngrok-gateway.json`
 2. Walk through each field — baseUrl, apiKey, defaultModel, fallbackModel
 3. Show how to set `ANTHROPIC_BASE_URL` environment variable to point at the gateway
-4. "If the gateway isn't working for you tonight, no worries. The setup guide in the repo has three options — ngrok, direct OpenAI, or direct Anthropic. All exercises work identically. Just swap the base URL in your config file."
+4. "If the gateway isn't working for you, no worries. The setup guide in the repo has three options — ngrok, direct OpenAI, or direct Anthropic. All exercises work identically. Just swap the base URL in your config file."
 
 **Tip for common questions:** "If someone asks about latency — the gateway adds minimal overhead. We're talking single-digit milliseconds for routing. The model inference time dwarfs it."
 
@@ -260,7 +260,7 @@ claude
 
 "For us, 'always return JSON' is an IMPORTANT rule. 'Use a friendly tone' is not."
 
-"One more thing — speed and effort controls. Type `/fast` to toggle fast mode — same model, faster output. Type `/effort low` for quick tasks, `/effort high` for complex reasoning, or `/effort max` for the deepest analysis. You can even say 'think hard' or 'ultrathink' in a prompt to trigger deeper reasoning for one turn. These are good to know but don't overthink them tonight."
+"One more thing — speed and effort controls. Type `/fast` to toggle fast mode — same model, faster output. Type `/effort low` for quick tasks, `/effort high` for complex reasoning, or `/effort max` for the deepest analysis. You can even say 'think hard' or 'ultrathink' in a prompt to trigger deeper reasoning for one turn. These are good to know but don't overthink them right now."
 
 **Transition:** "A few more tips before I set you loose."
 
@@ -342,7 +342,7 @@ claude
 
 "One more thing — as you build more projects with CLAUDE.md files, there's a tool called RuleMetric that lets you manage instructions across tools. Write once, convert to CLAUDE.md, Cursor rules, Copilot instructions, whatever. We won't use it in this course but it's worth knowing about as you scale up."
 
-"You just built your first agent feature. That's not nothing. Nice work tonight."
+"You just built your first agent feature. That's not nothing. Nice work this morning."
 
 "Oh — one more tip. Between sessions, try typing `/powerup` in Claude Code. It launches interactive lessons that teach you features through animated demos. Great way to discover things you didn't know existed."
 
