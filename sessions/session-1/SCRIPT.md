@@ -182,20 +182,33 @@ claude
 
 ---
 
-## Slide 13: ngrok AI Gateway (Optional)
+## Slide 13: ngrok AI Gateway
 **Time: 1 min**
 
-"ngrok AI Gateway is worth knowing about even if you don't use it today. It's a reverse proxy for AI — same concept as putting nginx in front of your web servers, but for language models."
+"ngrok AI Gateway is a reverse proxy for AI — same concept as putting nginx in front of your web servers, but for language models."
 
-"One API key for Anthropic, OpenAI, Google. Automatic failover. Cost routing that picks the cheapest model for a task. And PII redaction — strips sensitive data before it leaves your network."
+"One API key for Anthropic, OpenAI, Google. Automatic failover. Cost routing that picks the cheapest model for a task. PII redaction that strips sensitive data before it leaves your network."
 
-"Free tier is available at ngrok.com. We won't require it for any exercises, but it's a good tool to have in your belt for production use."
+"Quick backstory — ngrok was originally going to sponsor this series with gateway credits for everyone. That didn't come together, so we're using direct API keys as the default today. The ngrok free tier still works fine if you want to try it."
+
+**Transition:** "ngrok isn't the only gateway out there. Quick landscape overview."
+
+---
+
+## Slide 14: AI Gateway Landscape
+**Time: 1 min**
+
+"There are several AI gateways worth knowing about. ngrok is the one we cover because it works directly with Claude Code, but here are the others."
+
+"OpenRouter gives you a unified API for 200+ models — useful when you want to compare models or access niche providers. LiteLLM is open-source and self-hosted — good for teams that want full control with no vendor lock-in. Portkey adds observability, caching, and prompt management on top of routing — more of an enterprise play."
+
+"For Claude Code specifically, your options are direct Anthropic API or ngrok. The others are useful for general AI development work."
 
 **Transition:** "Let's get you connected."
 
 ---
 
-## Slide 14: Provider Setup
+## Slide 15: Provider Setup
 **Time: 2 min**
 
 [DEMO] Show both options:
@@ -210,7 +223,7 @@ claude
 
 ---
 
-## Slide 15: Slash Commands
+## Slide 16: Slash Commands
 **Time: 1 min**
 
 "Slash commands are custom workflows that live in your project. You create a markdown file in `.claude/commands/`, and it becomes a command you can run."
@@ -223,7 +236,7 @@ claude
 
 ---
 
-## Slide 16: Anatomy of a Slash Command
+## Slide 17: Anatomy of a Slash Command
 **Time: 1 min**
 
 "Here's our plan-event command. It's just markdown with instructions. Step 1: read CLAUDE.md. Step 2: generate the plan. Step 3: include all the required fields. Step 4: save it. Step 5: commit."
@@ -236,7 +249,7 @@ claude
 
 ---
 
-## Slide 17: LIVE DEMO — Building /plan-event
+## Slide 18: LIVE DEMO — Building /plan-event
 **Time: 3 min**
 
 [DEMO] In Claude Code:
@@ -255,7 +268,7 @@ claude
 
 ---
 
-## Slide 18: Power Keywords
+## Slide 19: Power Keywords
 **Time: 1 min**
 
 "There are certain words that Claude pays extra attention to. IMPORTANT elevates priority. MUST and NEVER are hard constraints. 'Proactively' means 'do this without asking me first.'"
@@ -270,7 +283,7 @@ claude
 
 ---
 
-## Slide 19: Tips & Gotchas
+## Slide 20: Tips & Gotchas
 **Time: 1 min**
 
 "Quick hits. Be specific in CLAUDE.md — give it schemas and examples, not vibes. Commit before you experiment — save points, remember? And don't say 'production-ready' in your instructions. It means nothing to an AI. Say exactly what you mean."
@@ -281,7 +294,7 @@ claude
 
 ---
 
-## Slide 20: BUILD TIME
+## Slide 21: BUILD TIME
 **Time: 30 min (exercise)**
 
 "Here's where you get your hands dirty. The exercise is in `sessions/session-1/EXERCISE.md`. Your goal: get `/plan-event` generating structured JSON."
@@ -305,7 +318,7 @@ claude
 
 ---
 
-## Slide 21: Checkpoint
+## Slide 22: Checkpoint
 **Time: 2 min**
 
 "Alright, let's check in. Go through this list. Git repo — check? CLAUDE.md — check? Project structure with a data directory? ngrok configured or at least direct API working? The slash command runs? And you've got at least one event plan saved?"
@@ -320,7 +333,7 @@ claude
 
 ---
 
-## Slide 22: What's Next — Session 2
+## Slide 23: What's Next — Session 2
 **Time: 1 min**
 
 "Session 2 is where it gets really interesting. We're going to talk about context engineering — and I don't mean prompting. I mean building blueprints that shape how your agent thinks about entire workflows."
@@ -333,7 +346,7 @@ claude
 
 ---
 
-## Slide 23: Session 1 Recap
+## Slide 24: Session 1 Recap
 **Time: 1 min**
 
 "Three things. Write them down if you want."
@@ -360,8 +373,8 @@ claude
 |---|---|---|
 | Intro & Setup | 1-6 | 10 min |
 | CLAUDE.md & Structure | 7-10 | 7 min |
-| Permissions & ngrok | 11-14 | 6 min |
-| Slash Commands & Tips | 15-19 | 7 min |
-| **Build Time** | **20** | **30 min** |
-| Wrap-up | 21-23 | 4 min |
+| Providers & Gateways | 11-15 | 7 min |
+| Slash Commands & Tips | 16-20 | 7 min |
+| **Build Time** | **21** | **30 min** |
+| Wrap-up | 22-24 | 4 min |
 | **Total** | | **~65 min** |

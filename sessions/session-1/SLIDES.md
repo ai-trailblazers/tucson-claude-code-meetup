@@ -260,7 +260,7 @@ Claude Code asks before running commands. You can pre-configure trust.
 
 # Connecting to an LLM Provider
 
-Claude Code needs an LLM to run. Three options:
+Claude Code needs an LLM to run. Three options for today:
 
 | Option | Setup | Cost |
 |--------|-------|------|
@@ -282,29 +282,46 @@ All exercises work identically regardless of which option you choose.
 
 ---
 
-## Slide 13: ngrok AI Gateway (Optional)
+## Slide 13: ngrok AI Gateway
 
-# ngrok AI Gateway — Optional
+# ngrok AI Gateway
 
-If you want multi-provider routing, failover, or cost optimization:
-
-- **One API key** for Anthropic, OpenAI, Google
-- **Automatic failover** if a provider goes down
-- **Cost routing** — `ngrok/auto` picks the cheapest model
-- **PII redaction** — strips sensitive data before it hits the model
-- **Free tier** available at ngrok.com
+**One endpoint. Multiple providers. Automatic routing.**
 
 ```
 Your App  --->  ngrok AI Gateway  --->  Anthropic
                                   --->  OpenAI
                                   --->  Google
+                                  --->  Ollama (local)
 ```
+
+- **Failover** — if Anthropic is down, route to OpenAI automatically
+- **Cost routing** — `ngrok/auto` picks the cheapest model for the task
+- **PII redaction** — strip sensitive data before it hits the model
+- **SDK compatible** — drop-in replacement, no code changes
 
 > ngrok was originally going to sponsor this series with gateway credits. That didn't come together, so we're using the free tier. Works fine for what we're doing.
 
 ---
 
-## Slide 14: Provider Setup
+## Slide 14: AI Gateway Landscape
+
+# AI Gateway Landscape
+
+ngrok is one of several AI gateways worth knowing about:
+
+| Gateway | What It Does | Good For |
+|---------|-------------|----------|
+| **ngrok AI Gateway** | Multi-provider routing, failover, PII redaction | Production apps, cost optimization |
+| **OpenRouter** | Unified API for 200+ models from many providers | Model comparison, access to niche models |
+| **LiteLLM** | Open-source proxy, self-hosted | Teams wanting full control, no vendor lock-in |
+| **Portkey** | Observability + routing + caching | Enterprise monitoring, prompt management |
+
+**For Claude Code specifically:** Direct Anthropic API or ngrok. The others are useful for general AI development and multi-model apps.
+
+---
+
+## Slide 15: Provider Setup
 
 # Provider Setup
 
@@ -330,7 +347,7 @@ See `sessions/SETUP-GUIDE.md` for detailed instructions.
 
 ---
 
-## Slide 15: Slash Commands
+## Slide 16: Slash Commands
 
 # Slash Commands
 
@@ -358,7 +375,7 @@ Custom workflows that live in your project.
 
 ---
 
-## Slide 16: Anatomy of a Slash Command
+## Slide 17: Anatomy of a Slash Command
 
 # Anatomy of a Slash Command
 
@@ -381,7 +398,7 @@ the schema in CLAUDE.md.
 
 ---
 
-## Slide 17: LIVE DEMO — Building /plan-event
+## Slide 18: LIVE DEMO — Building /plan-event
 
 # LIVE DEMO: Building /plan-event
 
@@ -410,7 +427,7 @@ the schema in CLAUDE.md.
 
 ---
 
-## Slide 18: Power Keywords
+## Slide 19: Power Keywords
 
 # Power Keywords
 
@@ -434,7 +451,7 @@ If everything is `IMPORTANT`, nothing is. Reserve these for rules that **truly m
 
 ---
 
-## Slide 19: Tips & Gotchas
+## Slide 20: Tips & Gotchas
 
 # Tips & Gotchas
 
@@ -452,7 +469,7 @@ If everything is `IMPORTANT`, nothing is. Reserve these for rules that **truly m
 
 ---
 
-## Slide 20: BUILD TIME
+## Slide 21: BUILD TIME
 
 # BUILD TIME
 
@@ -474,7 +491,7 @@ Raise your hand if you get stuck. Help your neighbor first.
 
 ---
 
-## Slide 21: Checkpoint
+## Slide 22: Checkpoint
 
 # Checkpoint — What You Should Have
 
@@ -489,7 +506,7 @@ Raise your hand if you get stuck. Help your neighbor first.
 
 ---
 
-## Slide 22: What's Next — Session 2
+## Slide 23: What's Next — Session 2
 
 # What's Next: Session 2
 
@@ -504,7 +521,7 @@ Raise your hand if you get stuck. Help your neighbor first.
 
 ---
 
-## Slide 23: Session 1 Recap
+## Slide 24: Session 1 Recap
 
 # Session 1 Recap
 
