@@ -8,16 +8,23 @@
 
 All live demos in this session (Slides 7, 13, 14) read files like `events/building-rag-pipelines.json` and `examples/sample-event-plan.json`. These exist in `solution/session-1/`, **not** in the course repo root.
 
-**Before the session, in a separate terminal:**
+**Before the session, from the course repo root:**
 ```bash
+rm -rf ~/dry-run-meetup
 cp -r solution/session-1 ~/dry-run-meetup
 cd ~/dry-run-meetup
-git init && git add -A && git commit -m "Session 1 state"
-cp -r ../tucson-meetup/templates/.claude/commands/* .claude/commands/   # generate-prp, execute-prp
+git init -q && git add -A && git -c user.email=you@local commit -q -m "Session 1 state"
+cp ../tucson-meetup/templates/.claude/commands/*.md .claude/commands/   # generate-prp, execute-prp
+cp ../tucson-meetup/templates/INITIAL_EXAMPLE.md ./INITIAL.md           # for the Slide 13 demo
 claude
 ```
 
-This gives you a clean post-Session-1 demo workspace with the PRP commands already copied in. Run all live demos from there. Keep a second terminal at the course repo root for the slides.
+This gives you a clean post-Session-1 workspace with:
+- `events/building-rag-pipelines.json`, `examples/sample-event-plan.json`, `data/{speakers,venues}.json` (used in the Slide 7 demo)
+- `.claude/commands/{plan-event,generate-prp,execute-prp}.md` (used in Slides 13, 14)
+- `INITIAL.md` (the MeetupBot comms-and-scheduling feature request, ready for Slide 13)
+
+Run all live demos from this directory. Keep a second terminal at the course repo root for navigating the slides.
 
 ---
 
@@ -205,7 +212,7 @@ This gives you a clean post-Session-1 demo workspace with the PRP commands alrea
 ## Slide 13: LIVE DEMO — /generate-prp
 **[~3 min]**
 
-> **Cwd:** Run from the post-Session-1 demo workspace described in "Instructor Prep — Demo Root" at the top of this file. INITIAL.md should already exist in that workspace (paste in the example from `templates/INITIAL_EXAMPLE.md` or the one from the Exercise) before the demo.
+> **Cwd:** Run from the post-Session-1 demo workspace described in "Instructor Prep — Demo Root" at the top of this file. The prep step already copied `INITIAL.md` into the workspace.
 
 [DEMO] In Claude Code, run: `/generate-prp INITIAL.md`
 

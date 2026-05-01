@@ -1,26 +1,25 @@
 ## FEATURE:
-
-- Pydantic AI agent that has another Pydantic AI agent as a tool.
-- Research Agent for the primary agent and then an email draft Agent for the subagent.
-- CLI to interact with the agent.
-- Gmail for the email draft agent, Brave API for the research agent.
+Build a communications and scheduling system for MeetupBot. The system should:
+- Generate event schedules that fit talks into time slots with breaks, using speaker availability from `data/speakers.json`
+- Draft announcement emails tailored to the target audience from the event plan
+- Draft personalized speaker outreach emails referencing their topics and past talks
+- All commands should consume the structured event plan JSON from `/plan-event` output
 
 ## EXAMPLES:
-
-In the `examples/` folder, there is a README for you to read to understand what the example is all about and also how to structure your own README when you create documentation for the above feature.
-
-- `examples/cli.py` - use this as a template to create the CLI
-- `examples/agent/` - read through all of the files here to understand best practices for creating Pydantic AI agents that support different providers and LLMs, handling agent dependencies, and adding tools to the agent.
-
-Don't copy any of these examples directly, it is for a different project entirely. But use this as inspiration and for best practices.
+- Event plan format: see `examples/sample-event-plan.json`
+- Speaker data: see `data/speakers.json` (note the `availability` field)
+- Venue data: see `data/venues.json` (note `capacity` and `amenities`)
+- Existing command pattern: see `.claude/commands/plan-event.md` for how slash commands are structured
 
 ## DOCUMENTATION:
-
-Pydantic AI documentation: https://ai.pydantic.dev/
+- Event plan JSON schema is defined in `CLAUDE.md`
+- Schedules should account for: talk duration, speaker availability, break intervals (every 60–90 min), 15-min setup buffer, 15-min networking at end
+- Announcement emails should include: event name, date, venue, speaker highlights, RSVP link placeholder, target-audience hook
+- Speaker outreach should include: personalized topic reference, event description, logistics, the ask
 
 ## OTHER CONSIDERATIONS:
-
-- Include a .env.example, README with instructions for setup including how to configure Gmail and Brave.
-- Include the project structure in the README.
-- Virtual environment has already been set up with the necessary dependencies.
-- Use python_dotenv and load_env() for environment variables
+- IMPORTANT: All slash commands must read the event plan JSON as input — never ask the user to retype event details
+- Schedule must validate that no speaker is double-booked
+- Announcements should match the tone defined in `CLAUDE.md`
+- Use `$ARGUMENTS` in slash commands for the event plan file path
+- `/build-schedule` should output both a markdown table and a JSON file
