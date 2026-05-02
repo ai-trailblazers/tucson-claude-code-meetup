@@ -238,7 +238,22 @@ Claude is following a blueprint you reviewed, not guessing.
 
 ---
 
-## Slide 15: The Examples/ Folder
+## Slide 15: When the PRP is wrong
+
+Most failures are catchable at review time — before `/execute-prp` runs.
+
+| Symptom | How you spot it | How to fix |
+|---|---|---|
+| PRP missed a constraint from INITIAL.md | Search the PRP for the keyword — it's not there | Add it to the Implementation Plan, save, re-run `/execute-prp` |
+| Generated command hardcodes values instead of `$ARGUMENTS` | Open the new command file — paths are baked in | Edit the command directly, or fix the PRP's pattern reference and re-execute |
+| Output doesn't match the schema in `CLAUDE.md` | Run the command — JSON keys wrong, fields missing | Tighten the schema rules in `CLAUDE.md` — every future command benefits |
+| `/execute-prp` left files half-done | Some command files in `.claude/commands/` are missing | Re-run `/execute-prp` on the same PRP — existing files are read and respected |
+
+**The leverage points are the PRP and `CLAUDE.md`.** Command files are downstream — fix upstream, regenerate downstream.
+
+---
+
+## Slide 16: The Examples/ Folder
 
 ```
 examples/
@@ -257,7 +272,7 @@ The design slop sites all look the same because the AI had no examples to differ
 
 ---
 
-## Slide 16: Composable Slash Commands
+## Slide 17: Composable Slash Commands
 
 Commands that feed into each other:
 
@@ -280,7 +295,7 @@ Each command reads structured data from the previous one.
 
 ---
 
-## Slide 17: $ARGUMENTS in Slash Commands
+## Slide 18: $ARGUMENTS in Slash Commands
 
 ```markdown
 ---
@@ -304,7 +319,7 @@ Build a schedule for the event plan at: $ARGUMENTS
 
 ---
 
-## Slide 18: Tips & Gotchas
+## Slide 19: Tips & Gotchas
 
 | | Tip |
 |---|---|
@@ -319,7 +334,7 @@ A bad PRP executed perfectly still gives you bad code. Don't skip the review ste
 
 ---
 
-## Slide 19: Exercise
+## Slide 20: Exercise
 
 ### Build the Comms & Scheduling System via PRP
 
@@ -341,7 +356,7 @@ Raise your hand if you get stuck on INITIAL.md — that's the hardest part.
 
 ---
 
-## Slide 20: Checkpoint
+## Slide 21: Checkpoint
 
 You should have:
 
@@ -359,7 +374,7 @@ You should have:
 
 ---
 
-## Slide 21: What's Next — Session 3
+## Slide 22: What's Next — Session 3
 
 ### Subagents & Hooks
 
@@ -370,7 +385,7 @@ Right now, one agent does everything. Next session:
 
 ---
 
-## Slide 22: Recap
+## Slide 23: Recap
 
 1. **Context engineering > prompt engineering**
    Give the AI everything it needs.

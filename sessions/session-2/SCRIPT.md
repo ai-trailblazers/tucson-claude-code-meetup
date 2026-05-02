@@ -252,11 +252,33 @@ Run all live demos from this directory. Keep a second terminal at the course rep
 > **Common question:** "What if the PRP is wrong? Do I have to regenerate the whole thing?"
 > **Answer:** "No! You can edit the PRP directly. It's just a markdown file. Fix the part that's wrong and re-run /execute-prp. That's another benefit of the two-step process."
 
-**Transition:** "Let me show you one more trick that makes all of this work better."
+**Transition:** "Quick pause before we move on — let's talk about what to do when this doesn't work."
 
 ---
 
-## Slide 15: The Examples/ Folder
+## Slide 15: When the PRP is wrong
+**[~2 min]**
+
+"You're going to run /generate-prp and /execute-prp during the exercise, and the output won't always be perfect. Most failures are catchable — if you know what to look for. Four shapes."
+
+"First — the PRP missed something from INITIAL.md. Maybe you said schedules need to validate speaker availability, but the PRP just says 'pick speakers.' How you spot it: open the PRP, search for the keyword, it's not there. Fix: add it to the Implementation Plan section, save, re-run /execute-prp."
+
+"Second — the generated command hardcodes values instead of using $ARGUMENTS. You'd see this if a build-schedule command had 'building-rag-pipelines.json' baked into it. Fix: edit the command directly, or fix the PRP's pattern reference and re-execute."
+
+"Third — output doesn't match the schema in CLAUDE.md. JSON keys wrong, fields missing. The fix here is upstream: tighten CLAUDE.md. Every future command benefits."
+
+"Fourth — execute-prp left things half-done. Some commands exist, others don't. Re-run /execute-prp on the same PRP. Existing files get read and respected, missing ones get created."
+
+[PAUSE] "The pattern: PRP and CLAUDE.md are the leverage points. The command files are downstream artifacts. Fix upstream, regenerate downstream."
+
+> **Common question:** "What if I edit a generated command file by hand — will /execute-prp overwrite it?"
+> **Answer:** "It reads the existing file as part of grounding. If your edit is consistent with the PRP, it'll be respected. If it conflicts with the PRP, the PRP wins on re-execute. If you've made an edit you want to keep, mirror it back into the PRP."
+
+**Transition:** "OK, one more high-leverage technique before the exercise."
+
+---
+
+## Slide 16: The Examples/ Folder
 **[~1 min]**
 
 "This is maybe the highest-leverage thing you'll learn today. If you want the AI to produce a specific style of output, don't describe it — show it. Put example files in an examples/ folder and point to them."
@@ -269,7 +291,7 @@ Run all live demos from this directory. Keep a second terminal at the course rep
 
 ---
 
-## Slide 16: Composable Slash Commands
+## Slide 17: Composable Slash Commands
 **[~1 min]**
 
 "This is the architecture. `/plan-event` outputs JSON. `/build-schedule` reads that JSON. `/draft-announcement` reads the same JSON. Each command is simple on its own, but they compose into a pipeline."
@@ -280,7 +302,7 @@ Run all live demos from this directory. Keep a second terminal at the course rep
 
 ---
 
-## Slide 17: $ARGUMENTS in Slash Commands
+## Slide 18: $ARGUMENTS in Slash Commands
 **[~1 min]**
 
 "When you type `/build-schedule events/rag-pipelines.json`, everything after the command name becomes $ARGUMENTS. Inside the command markdown file, $ARGUMENTS gets replaced with that file path."
@@ -297,7 +319,7 @@ Run all live demos from this directory. Keep a second terminal at the course rep
 
 ---
 
-## Slide 18: Tips & Gotchas
+## Slide 19: Tips & Gotchas
 **[~1 min]**
 
 "Biggest mistake I see: people skip INITIAL.md and go straight to asking Claude to build things. Don't do that. The 15 minutes you spend on INITIAL.md saves you an hour of debugging."
@@ -314,7 +336,7 @@ Run all live demos from this directory. Keep a second terminal at the course rep
 
 ---
 
-## Slide 19: Exercise
+## Slide 20: Exercise
 **[~40 min — exercise time]**
 
 "Open `sessions/session-2/EXERCISE.md` and follow the steps. You're building the full pipeline: plan-event into build-schedule into draft-announcement."
@@ -342,7 +364,7 @@ Run all live demos from this directory. Keep a second terminal at the course rep
 
 ---
 
-## Slide 20: Checkpoint
+## Slide 21: Checkpoint
 **[~2 min]**
 
 "Alright, let's check in. Raise your hand if you have a working INITIAL.md."
@@ -367,7 +389,7 @@ Run all live demos from this directory. Keep a second terminal at the course rep
 
 ---
 
-## Slide 21: What's Next — Session 3
+## Slide 22: What's Next — Session 3
 **[~1 min]**
 
 "Right now your MeetupBot is a solo performer. One agent does everything — planning, scheduling, writing emails. It works, but it doesn't scale well."
@@ -380,7 +402,7 @@ Run all live demos from this directory. Keep a second terminal at the course rep
 
 ---
 
-## Slide 22: Recap
+## Slide 23: Recap
 **[~2 min]**
 
 "Three things to take away from today."

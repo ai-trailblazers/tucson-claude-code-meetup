@@ -151,6 +151,23 @@ You should now have:
 - [ ] At least 2 event plans with matching schedules and announcements
 - [ ] All commands consume structured JSON, not freeform input
 
+## When the PRP or generated commands are wrong
+
+Most failures are catchable at review time. Diagnose at the right level — don't start over.
+
+| Symptom | How to spot it | How to fix |
+|---|---|---|
+| PRP missed a constraint from your INITIAL.md | Open `PRPs/meetup-comms.md`, search for the keyword from your OTHER CONSIDERATIONS — it's not there | Add a step or risk to the PRP that addresses it. Save. Re-run `/execute-prp`. |
+| Generated command hardcodes a value instead of using `$ARGUMENTS` | Open the new command file — paths or topics are baked in instead of parameterized | Edit the command directly, OR fix the PRP's pattern reference (e.g., "follow the `$ARGUMENTS` pattern from `plan-event.md`") and re-execute |
+| Output doesn't match the schema in `CLAUDE.md` | Run the command — JSON keys don't match, or fields are missing | Tighten the schema rules in `CLAUDE.md` (the source of truth). Every future command benefits. |
+| `/execute-prp` left files half-done (some commands missing) | `ls .claude/commands/` shows only some of the files the PRP described | Re-run `/execute-prp` on the same PRP. Existing files are read and respected — missing ones get created. |
+| Schedule has speaker double-booked or missing breaks | Run `/build-schedule`, scan output — same speaker id appears in overlapping slots, or 90+ min of content with no break | Add explicit validation to `CLAUDE.md` Schedule Constraints. Re-run the command. |
+| Announcement tone feels off | Read the draft against your CLAUDE.md tone rules | Tone rules are too vague — make them specific (vocabulary, length, opening style), or add a real announcement to `examples/`. |
+
+**The leverage points are the PRP and `CLAUDE.md`.** Generated command files are downstream artifacts. Fix upstream, regenerate downstream.
+
+If you've made a hand-edit to a generated command that you want to keep, mirror the change back into the PRP — otherwise a future re-execute will overwrite it.
+
 ## Stuck?
 
 If you're blocked or your output doesn't look right, compare your project against the reference implementation:
