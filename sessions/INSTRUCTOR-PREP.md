@@ -103,6 +103,9 @@ claude
 - Hook doesn't fire — check settings.local.json JSON syntax (missing commas, wrong nesting)
 - Hook doesn't receive stdin — test manually: `echo '{"tool_name":"Write","tool_input":{"file_path":"comms/test.md"}}' | bash .claude/hooks/auto-review.sh`
 - Subagent can't find files — check that event plan exists from previous session
+- **Hand-edited agent file not picked up** — subagents load at session start. Tell student to exit and re-run `claude`. Files created via `/agents` apply immediately and don't have this issue.
+- **Hook fires on first run but not on re-run** — `/draft-announcement` may use `Edit` (not `Write`) when the file already exists. Change matcher to `"Write|Edit"` to catch both.
+- **Settings.local.json clobbered** — student pasted the JSON block instead of merging. Have them open the file and confirm `permissions.allow` from earlier sessions is preserved alongside the `hooks` block.
 
 ### Session 4 Dry Run (~60 min)
 

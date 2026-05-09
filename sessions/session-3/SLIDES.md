@@ -104,32 +104,31 @@ File: `.claude/agents/schedule-optimizer.md`
 ```markdown
 ---
 name: schedule-optimizer
-description: Proactively analyzes event schedules for conflicts,
-  optimizes time slots, and balances topic distribution.
+description: Schedule optimization specialist. Use proactively
+  to optimize any meetup schedule for speaker conflicts,
+  break intervals, and audience energy.
 tools: Read, Grep, Glob
+model: sonnet
 ---
 
-# Schedule Optimizer Agent
+You are a meetup schedule optimization specialist.
 
-## Instructions
-You are a schedule optimization specialist.
-Analyze the provided schedule for conflicts, gaps,
-and topic clustering issues.
-
-## Input
-- Schedule JSON from /build-schedule output
+When given an event plan, optimize the schedule by:
+1. **Conflict check** — verify no speaker is double-booked
+2. **Energy management** — engaging talks after breaks
+3. **Break intervals** — every 60–90 minutes
+4. **Setup/teardown** — 15-min buffer at start and end
 
 ## Output Format
-Return a JSON object with:
-- conflicts: array of detected conflicts
-- suggestions: array of optimizations
-- optimized_schedule: the improved schedule
+A markdown report with: optimized schedule table,
+changes made, conflicts resolved, warnings.
 
 ## Rules
-- Never modify files directly
-- Flag conflicts, don't silently resolve them
-- Preserve speaker preferences when possible
+- Never exceed venue capacity
+- Flag conflicts — don't silently drop speakers
 ```
+
+`tools` allowlist + `model:` field = least-privilege, right-sized cost.
 
 ---
 
@@ -139,16 +138,16 @@ Return a JSON object with:
 |---------|--------|
 | **Own context window** | Fresh context, no bleed from parent |
 | **Limited tools** | Only what it needs — `Read`, `Grep`, `Glob`, not `Write` |
-| **"Proactively" keyword** | In description: tells Claude to auto-invoke |
+| **`use proactively` phrasing** | In description: encourages Claude to auto-invoke |
 | **One-shot design** | Does its job, returns result, exits |
-| **Structured output** | JSON contract for reliable handoff |
+| **Structured output** | Pick a parseable format (markdown table or JSON) |
 
 ```yaml
-description: Proactively analyzes schedules for conflicts
-  and optimization opportunities.
+description: Schedule optimization specialist. Use proactively
+  to flag conflicts and rebalance the agenda.
 ```
 
-The word **"Proactively"** = Claude will invoke this agent without being asked.
+`use proactively` is a **nudge**, not a guarantee. Claude still picks based on the description match.
 
 ---
 
@@ -156,21 +155,27 @@ The word **"Proactively"** = Claude will invoke this agent without being asked.
 
 ### Build it. Test it.
 
-```bash
-# Create the subagent
-mkdir -p .claude/agents
+Two ways to create a subagent:
 
-# Test it
-claude "Use schedule-optimizer agent to optimize
-the Python meetup schedule for next month"
+```bash
+# Option A: guided UI (recommended)
+/agents
+# → Library → Create new agent → Project scope
+
+# Option B: write the file by hand
+mkdir -p .claude/agents
+$EDITOR .claude/agents/schedule-optimizer.md
+```
+
+> **Gotcha:** Hand-edited subagent files load at session start. After saving, **restart your session** to pick up changes. The `/agents` UI applies changes immediately.
+
+Test it:
+```
+Use the schedule-optimizer agent to optimize
+the Python meetup schedule for next month
 ```
 
 Compare output to the **monolith attempt** from Slide 4.
-
-**What to watch for:**
-- Specific conflict detection
-- Concrete time-slot suggestions
-- Structured, actionable output
 
 ---
 
@@ -209,25 +214,34 @@ Final verdict: **SEND** / **REVISE** / **REWRITE**
 
 ---
 
-## Slide 12: Model Routing with ngrok
+## Slide 12: Model Routing — The `model:` Field
 
-Route the **right model** to the **right task**:
+Route the **right model** to the **right task** — natively, per subagent:
 
-| Task | Model | Why |
-|------|-------|-----|
-| Drafting email copy | `gpt-4o-mini` | Fast, cheap, good at prose |
-| Schedule optimization | `claude-sonnet` | Strong at structured reasoning |
-| Quality review | `claude-sonnet` | Nuanced evaluation |
-| Simple formatting | `gpt-4o-mini` | Don't overspend on easy tasks |
-
-```json
-{
-  "model": "ngrok/auto",
-  "routing": "let the gateway choose"
-}
+```yaml
+---
+name: schedule-optimizer
+tools: Read, Grep, Glob
+model: sonnet     # nuanced reasoning over structured data
+---
 ```
 
-ngrok AI Gateway handles routing — you set the rules.
+```yaml
+---
+name: comms-reviewer
+tools: Read, Grep, Glob
+model: haiku      # fast, cheap evaluation
+---
+```
+
+| Field value | When to use |
+|---|---|
+| `haiku` | Fast triage, scoring, classification |
+| `sonnet` | Default for most reasoning |
+| `opus` | Heaviest planning / hardest tradeoffs |
+| `inherit` | Match the parent session (default) |
+
+> Want to mix providers (Claude + GPT)? Put **ngrok AI Gateway** in front and route by tag. That's a layer above — `model:` handles Claude-side routing for free.
 
 ---
 
@@ -235,20 +249,24 @@ ngrok AI Gateway handles routing — you set the rules.
 
 **Hooks** = code that runs when things happen in Claude Code.
 
+Common events (full list has 30+ events — see docs):
+
 | Hook Event | When It Fires | Use Case |
 |-----------|--------------|----------|
 | `PreToolUse` | Before a tool executes | Block dangerous operations, validate input |
 | `PostToolUse` | After a tool completes | Trigger reviews, log actions, notify |
 | `UserPromptSubmit` | When user sends a message | Validate/transform input, add context |
-| `Stop` | When agent finishes responding | Summarize, commit, clean up |
-| `SubagentStop` | When a subagent finishes | Process subagent results |
-| `Notification` | When a notification is sent | React to system events |
+| `Stop` / `SubagentStop` | When the agent (or a subagent) finishes | Summarize, commit, clean up |
+| `SessionStart` / `SessionEnd` | Session boundaries | Bootstrap env, archive transcripts |
+| `PreCompact` | Before context compaction | Persist state you don't want compressed |
 
 Each hook receives **JSON on stdin** with event details (tool name, file path, etc.).
 
-**Conditional hooks** (new): target specific actions with `if` field:
+**Conditional hooks** — target specific actions with the `if` field (tool events only):
 ```json
-{ "matcher": "Bash", "if": "Bash(git commit *)", "hooks": [...] }
+{ "matcher": "Bash", "hooks": [
+  { "type": "command", "if": "Bash(git commit *)", "command": "..." }
+]}
 ```
 
 Think of hooks as **CI/CD for your agent workflow**.
@@ -360,8 +378,8 @@ Claude Code ──► MCP Server ──► External Service
 ```
 
 **Recent improvements:**
-- **Tool Search** — lazy-loads tools on demand, up to 95% context savings
-- **Channels** (preview) — MCP servers push messages into your session (Telegram, Discord, webhooks)
+- **Tool Search** — defers tool definitions until Claude needs them, keeping MCP context low when you connect many servers
+- **Channels** (research preview) — MCP servers push messages into your session (Telegram, Discord, webhooks)
 
 For MeetupBot in production, MCP could connect:
 - **Eventbrite** — auto-publish events
@@ -376,11 +394,13 @@ For MeetupBot in production, MCP could connect:
 ## Slide 18: Tips & Gotchas
 
 ### Do
-- Use **"Proactively"** in subagent descriptions
+- Include **"use proactively"** in subagent descriptions
 - Design descriptions to be **self-contained**
-- Give subagents **minimal tool sets**
-- Return **structured JSON** from subagents
+- Give subagents **minimal tool sets** (or use `disallowedTools`)
+- Set `model:` per task — `haiku` for triage, `sonnet` for reasoning
+- Return a **parseable, structured** output (table or JSON)
 - Test subagents **in isolation** first
+- **Restart your session** after hand-editing agent files
 
 ### Don't
 - Give subagents tools they don't need

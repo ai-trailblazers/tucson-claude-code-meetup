@@ -5,17 +5,26 @@ Break the monolithic agent into specialists — a schedule optimizer and a comms
 
 ## Step 1: Experience the Problem (10 min)
 
-Before building subagents, see why they're needed. First, make sure you have an event plan to work with — if you don't have one from Session 2, run `/plan-event "Prompt Engineering vs Context Engineering"` to generate one now.
+Before building subagents, see why they're needed. First, make sure you have an event plan to work with. If you don't have one from Session 2, run:
 
-Then try this all-in-one prompt (adjust the filename to match your actual event plan):
-
+```text
+/plan-event "Getting Started with AI Agents"
+/build-schedule events/getting-started-with-ai-agents.json
+/draft-announcement events/getting-started-with-ai-agents.json
+/draft-speaker-outreach events/getting-started-with-ai-agents.json
 ```
-Read events/prompt-engineering-vs-context-engineering.json.
+
+> We use the same event name throughout this exercise (`getting-started-with-ai-agents`) so you can paste commands without rewriting paths. If you already have a different plan, swap the filename below.
+
+Then try this all-in-one prompt:
+
+```text
+Read events/getting-started-with-ai-agents.json.
 Now do ALL of the following in one response:
 1. Optimize the schedule to maximize networking time
-2. Rewrite the announcement email to be more engaging
+2. Rewrite the announcement in comms/ for better engagement
 3. Review the speaker outreach emails for tone issues
-4. Suggest a better venue based on the attendee count
+4. Suggest a better venue based on data/venues.json
 ```
 
 **Notice the output quality.** It tries to do everything and does nothing well. The context is overloaded — scheduling constraints compete with email tone feedback.
@@ -26,13 +35,18 @@ Now let's fix this with specialists.
 
 ## Step 2: Build the Schedule Optimizer Subagent (15 min)
 
+You can create subagents two ways:
+- **`/agents` slash command** (recommended) — guided UI with optional Claude-generated prompts; changes apply immediately.
+- **Hand-write the file** — clearer for learning. We'll do this. **Important:** after saving, restart your Claude Code session — hand-edited agent files only load at session start.
+
 Create `.claude/agents/schedule-optimizer.md`:
 
 ```markdown
 ---
 name: schedule-optimizer
-description: "Schedule optimization specialist. Proactively optimizes any meetup schedule for speaker conflicts, break intervals, and audience energy. Reads event plans and speaker data to produce conflict-free schedules with reasoning."
+description: "Schedule optimization specialist. Use proactively to optimize any meetup schedule for speaker conflicts, break intervals, and audience energy. Reads event plans and speaker data to produce conflict-free schedules with reasoning."
 tools: Read, Grep, Glob
+model: sonnet
 ---
 
 You are a meetup schedule optimization specialist.
@@ -78,11 +92,14 @@ WARNINGS: {any remaining issues}
 - Prefer 30-min talk slots and 15-min breaks unless the event format specifies otherwise
 ```
 
-**Why limit tools?** Notice the `tools: Read, Grep, Glob` line only lists read-only tools. This is a critical safety pattern: the schedule optimizer should *analyze and report*, not modify files directly. By only granting read-capable tools, you guarantee this agent can't accidentally overwrite your event plan or run arbitrary commands. Each specialist gets only the tools it needs — the principle of least privilege applied to AI agents.
+**Why limit tools?** The `tools: Read, Grep, Glob` line only lists read-only tools. This is a critical safety pattern: the schedule optimizer should *analyze and report*, not modify files directly. By only granting read-capable tools, you guarantee this agent can't accidentally overwrite your event plan or run arbitrary commands. Each specialist gets only the tools it needs — the principle of least privilege applied to AI agents.
 
-Test it manually (adjust the filename to match your event plan):
-```
-Use the schedule-optimizer agent to optimize the schedule for events/prompt-engineering-vs-context-engineering.json
+**Why `model: sonnet`?** Native model routing. Sonnet handles structured reasoning over the schedule well. Use `model: haiku` for cheaper/faster scoring (we'll do that on the comms-reviewer), `opus` for the heaviest reasoning, or `inherit` to match the parent session. Field is optional; default is `inherit`.
+
+Test it manually:
+
+```text
+Use the schedule-optimizer agent to optimize the schedule for events/getting-started-with-ai-agents.json
 ```
 
 ## Step 3: Build the Comms Reviewer Subagent (10 min)
@@ -92,8 +109,9 @@ Create `.claude/agents/comms-reviewer.md`:
 ```markdown
 ---
 name: comms-reviewer
-description: "Communications quality reviewer. Proactively reviews any drafted email or announcement for tone, completeness, and missing information. Scores 1-10 and suggests specific improvements."
+description: "Communications quality reviewer. Use proactively to review any drafted email or announcement for tone, completeness, and missing information. Scores 1-10 and suggests specific improvements."
 tools: Read, Grep, Glob
+model: haiku
 ---
 
 You are a communications quality reviewer for AI developer meetup announcements.
@@ -134,8 +152,9 @@ SUGGESTIONS:
 ```
 
 Test it:
-```
-Use the comms-reviewer agent to review the announcement for events/prompt-engineering-vs-context-engineering.json
+
+```text
+Use the comms-reviewer agent to review the announcement for events/getting-started-with-ai-agents.json
 ```
 
 ## Step 4: Wire the Auto-Review Hook (15 min)
@@ -169,19 +188,21 @@ Make it executable:
 chmod +x .claude/hooks/auto-review.sh
 ```
 
-> **How hooks work:** Claude Code supports these lifecycle events:
+> **How hooks work:** Claude Code supports 30+ lifecycle events. The ones you'll reach for most:
 > - `PreToolUse` — runs before Claude uses a tool (can block it)
 > - `PostToolUse` — runs after Claude uses a tool (can react to it)
 > - `UserPromptSubmit` — runs when you send a message
-> - `Stop` — runs when Claude finishes responding
+> - `Stop` / `SubagentStop` — runs when the agent (or subagent) finishes responding
+> - `SessionStart` / `SessionEnd` — runs at session boundaries (bootstrap/cleanup)
+> - `PreCompact` — runs before context compaction (persist state you don't want compressed)
 >
-> Each hook is a shell script that receives JSON on stdin with details about the event. The script below is a `PostToolUse` hook that fires on every `Write` tool use.
+> Each hook is a shell script that receives JSON on stdin with details about the event (`session_id`, `transcript_path`, `cwd`, `hook_event_name`, `tool_name`, `tool_input`, `tool_response`). The script below is a `PostToolUse` hook that fires on every `Write` tool use.
 >
-> **Conditional hooks (new):** You can make hooks more targeted with an `if` field. For example, to only fire on git commits: `"if": "Bash(git commit *)"`. This prevents the hook from firing on every Bash call.
+> **Conditional hooks:** You can make hooks more targeted with an `if` field that uses permission-rule syntax. For example, to only fire on git commits: `"if": "Bash(git commit *)"`. The `if` field only applies to tool events (`PreToolUse`, `PostToolUse`, etc.).
 >
-> **More hook events:** Beyond the four above, Claude Code also supports `SubagentStop` (when a subagent finishes), `Notification` (system notifications), `CwdChanged` (working directory changes), and `FileChanged` (file modifications). See the docs for the full list.
+> **Edit vs Write gotcha:** This hook only fires on the `Write` tool. If a student re-runs `/draft-announcement` on an existing file, Claude may use `Edit` instead of `Write` and the hook won't fire. To catch both, change the matcher to `"Write|Edit"`.
 
-Register the hook in `.claude/settings.local.json`:
+Register the hook in `.claude/settings.local.json`. **Don't replace the file** — merge the `hooks` block into whatever's already there (you may already have a `permissions` block from earlier sessions). Result should look like:
 
 ```json
 {
@@ -207,31 +228,33 @@ Register the hook in `.claude/settings.local.json`:
 }
 ```
 
+> **`.claude/settings.json` vs `.claude/settings.local.json`:** Use `settings.json` for hooks you want to commit and share with the team. Use `settings.local.json` for personal/machine-local config. For this exercise, either is fine.
+
 ## Step 5: Test the Full Loop (10 min)
 
-Now run the full pipeline and watch the specialists work:
+Now run the full pipeline end-to-end and watch the specialists + hook work together.
 
-```
-/plan-event "Getting Started with AI Agents"
-```
+> **Hook gotcha — read this first.** The hook only fires on the `Write` tool. If `comms/getting-started-with-ai-agents-announcement.md` already exists from earlier in this exercise, Claude will use `Edit` and the hook will silently skip. Either delete the file first (`rm comms/getting-started-with-ai-agents-announcement.md`), or change your matcher to `"Write|Edit"` in `.claude/settings.local.json`.
 
-Then:
-```
+Run the chain:
+
+```text
 /build-schedule events/getting-started-with-ai-agents.json
-```
 
-Now ask Claude to optimize it:
-```
 Use the schedule-optimizer agent to optimize the schedule we just built
-```
 
-Draft an announcement:
-```
 /draft-announcement events/getting-started-with-ai-agents.json
 ```
 
-The hook should fire and log the review trigger. Then manually invoke the reviewer:
+The hook should now fire — verify it logged:
+
+```bash
+cat .claude/logs/reviews.log
 ```
+
+Then explicitly invoke the reviewer:
+
+```text
 Use the comms-reviewer agent to review the announcement we just drafted
 ```
 
