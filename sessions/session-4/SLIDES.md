@@ -16,17 +16,17 @@ Tucson Claude Code Meetup | `github.com/ai-trailblazers/tucson-claude-code-meetu
 
 ---
 
-## Slide 2: Recap -- The Full System So Far
+## Slide 2: Recap — The Full System So Far
 
 What we've built across 3 sessions:
 
-- `/plan-event` -- structured event planning
-- `/build-schedule` -- detailed schedule generation
-- `/draft-announcement` -- communication drafts
-- `/draft-speaker-outreach` -- personalized speaker emails
-- `schedule-optimizer` -- subagent specialist
-- `comms-reviewer` -- communication quality subagent
-- Auto-review hook -- triggered on comms writes
+- `/plan-event` — structured event planning
+- `/build-schedule` — detailed schedule generation
+- `/draft-announcement` — communication drafts
+- `/draft-speaker-outreach` — personalized speaker emails
+- `schedule-optimizer` — subagent specialist
+- `comms-reviewer` — communication quality subagent
+- Auto-review hook — triggered on comms writes
 
 **Today:** parallel generation + learning from results
 
@@ -38,10 +38,10 @@ What we've built across 3 sessions:
 
 You will learn:
 
-- **Parallel subagents** -- run multiple agents simultaneously
-- **Evaluation-driven selection** -- let specialists pick the winner
-- **Git worktrees** -- isolated workspaces for each variant
-- **Feedback loops** -- agents that learn from past results
+- **Parallel subagents** — run multiple agents simultaneously
+- **Evaluation-driven selection** — let specialists pick the winner
+- **Git worktrees** — isolated workspaces for each variant
+- **Feedback loops** — agents that learn from past results
 
 ---
 
@@ -101,7 +101,7 @@ But what if we do it **intentionally**?
 
 ---
 
-## Slide 6: How It Works -- Under the Hood
+## Slide 6: How It Works — Under the Hood
 
 **Git worktrees provide isolation**
 
@@ -118,7 +118,7 @@ meetup-agent-v3/     ← variant 3 workspace
 
 ---
 
-## Slide 7: Git Worktrees -- The Concept
+## Slide 7: Git Worktrees — The Concept
 
 > Aside for the curious
 
@@ -145,7 +145,7 @@ Same repo. Separate branches. Parallel work.
 
 ---
 
-## Slide 8: LIVE DEMO -- Parallel Generation
+## Slide 8: LIVE DEMO — Parallel Generation
 
 **3 variants for "RAG Workshop"**
 
@@ -159,7 +159,7 @@ Watch all 3 run **simultaneously**.
 
 ---
 
-## Slide 9: Evaluation -- Reusing Your Specialists
+## Slide 9: Evaluation — Reusing Your Specialists
 
 Remember our subagents from Session 3?
 
@@ -174,7 +174,7 @@ Each specialist scores each variant on the same criteria.
 
 ---
 
-## Slide 10: LIVE DEMO -- Scoring Variants
+## Slide 10: LIVE DEMO — Scoring Variants
 
 **Evaluation Results:**
 
@@ -208,7 +208,7 @@ This is how production AI systems work.
 
 ---
 
-## Slide 12: The Missing Piece -- Learning
+## Slide 12: The Missing Piece — Learning
 
 Our agent plans **great** events. But it doesn't remember what happened.
 
@@ -299,7 +299,7 @@ One line in your slash command closes the loop.
 
 ---
 
-## Slide 16: LIVE DEMO -- The Full Loop
+## Slide 16: LIVE DEMO — The Full Loop
 
 1. Create mock feedback from a past event
 2. Run `/plan-event` for a new topic
@@ -409,7 +409,7 @@ npm install @anthropic-ai/claude-agent-sdk  # TypeScript
 
 ---
 
-## Slide 22b: Current Claude Models (April 2026)
+## Slide 23: Current Claude Models
 
 | Model | Best For | Context |
 |---|---|---|
@@ -421,7 +421,7 @@ npm install @anthropic-ai/claude-agent-sdk  # TypeScript
 
 ---
 
-## Slide 23: Course Recap
+## Slide 24: Course Recap
 
 | Session | Key Lesson |
 |---|---|
@@ -436,7 +436,7 @@ Same model. What changed was the context, the structure, and the feedback.
 
 ---
 
-## Slide 24: Thank You
+## Slide 25: Thank You
 
 **Resources:**
 - [Claude Code Docs](https://code.claude.com/docs)

@@ -15,12 +15,12 @@ Today we're going to take the non-determinism of LLMs — the thing that usually
 
 ---
 
-## Slide 2: Recap -- The Full System So Far
+## Slide 2: Recap — The Full System So Far
 **[~2 min]**
 
 Let's take a quick inventory of what you've built. This is real. You built all of this.
 
-`/plan-event` kicks things off -- structured event planning. `/build-schedule` creates a detailed timeline. The `schedule-optimizer` subagent reviews that schedule for quality. `/draft-announcement` and `/draft-speaker-outreach` handle comms. The auto-review hook fires on every comms write. And the `comms-reviewer` subagent checks tone and clarity automatically.
+`/plan-event` kicks things off — structured event planning. `/build-schedule` creates a detailed timeline. The `schedule-optimizer` subagent reviews that schedule for quality. `/draft-announcement` and `/draft-speaker-outreach` handle comms. The auto-review hook fires on every comms write. And the `comms-reviewer` subagent checks tone and clarity automatically.
 
 That's a legitimate agent system. Multiple specialized components working together.
 
@@ -31,7 +31,7 @@ Today we add two more capabilities: parallel generation and learning from result
 ## Slide 3: Today's Goal
 **[~1 min]**
 
-Here's what we're building: a system that generates competing variants of an event plan, evaluates them objectively, picks the best one, and then -- this is the key part -- learns from what actually happens when the event runs.
+Here's what we're building: a system that generates competing variants of an event plan, evaluates them objectively, picks the best one, and then — this is the key part — learns from what actually happens when the event runs.
 
 Four concepts: parallel subagents, evaluation-driven selection, git worktrees for isolation, and feedback loops.
 
@@ -61,15 +61,15 @@ This is actually how production AI systems work at companies like Anthropic. You
 
 Here's the architecture. The main agent spawns three subagents. Each one gets a different directive. V1 focuses on networking and community. V2 goes deep on technical content. V3 is all hands-on workshop.
 
-Each subagent runs the full pipeline -- plan, schedule, announcement -- but with its own personality and priorities.
+Each subagent runs the full pipeline — plan, schedule, announcement — but with its own personality and priorities.
 
-Then our specialists from Session 3 -- the ones you already built -- score each variant. The winner gets selected.
+Then our specialists from Session 3 — the ones you already built — score each variant. The winner gets selected.
 
 The beautiful thing is we're not building new evaluation logic. We're reusing the subagents we already have.
 
 ---
 
-## Slide 6: How It Works -- Under the Hood
+## Slide 6: How It Works — Under the Hood
 **[~1 min]**
 
 Practically, each subagent needs its own workspace so they don't step on each other's files. That's where git worktrees come in.
@@ -78,27 +78,27 @@ You end up with four directories: the main workspace plus one for each variant. 
 
 ---
 
-## Slide 7: Git Worktrees -- The Concept
+## Slide 7: Git Worktrees — The Concept
 **[~1 min]**
 
 Quick aside for the curious. A git worktree is a separate working directory that's linked to the same repository. Same repo, separate branches, separate file systems.
 
 The Agent tool in Claude Code has an `isolation: "worktree"` option that sets this up automatically. You don't have to manage it yourself.
 
-If you're not familiar with worktrees, don't worry -- Claude handles the mechanics. The important thing is understanding that each variant gets its own isolated space to work in.
+If you're not familiar with worktrees, don't worry — Claude handles the mechanics. The important thing is understanding that each variant gets its own isolated space to work in.
 
 "And here's the best part — you don't need special syntax to trigger this. You just describe what you want in natural language: 'run 3 parallel subagents, each in its own worktree.' Claude figures out the orchestration. If it doesn't automatically parallelize, you can be more explicit by saying 'run these as 3 separate subagents in parallel, each in its own worktree.' You'll see 'launching agent' messages in the terminal for each one."
 
 ---
 
-## Slide 8: LIVE DEMO -- Parallel Generation
+## Slide 8: LIVE DEMO — Parallel Generation
 **[~3 min]**
 
 [DEMO]
 
 Alright, let's see this in action. I'm going to generate three variants for a RAG Workshop event.
 
-V1 is community-first -- lots of networking time, group discussion, demos. V2 is a deep-dive -- architecture diagrams, internal mechanics, advanced patterns. V3 is a workshop-lab -- you're building a RAG pipeline from scratch during the session.
+V1 is community-first — lots of networking time, group discussion, demos. V2 is a deep-dive — architecture diagrams, internal mechanics, advanced patterns. V3 is a workshop-lab — you're building a RAG pipeline from scratch during the session.
 
 Watch the terminal. You'll see three subagents spin up simultaneously. Each one is working in its own worktree, running the full pipeline independently.
 
@@ -110,7 +110,7 @@ Three complete event plans. Three schedules. Three announcements. Generated in p
 
 ---
 
-## Slide 9: Evaluation -- Reusing Your Specialists
+## Slide 9: Evaluation — Reusing Your Specialists
 **[~1 min]**
 
 Now here's where Sessions 3 pays off. Remember `schedule-optimizer` and `comms-reviewer`? Those subagents you built?
@@ -121,7 +121,7 @@ You already built the evaluators — now you're just pointing them at three thin
 
 ---
 
-## Slide 10: LIVE DEMO -- Scoring Variants
+## Slide 10: LIVE DEMO — Scoring Variants
 **[~2 min]**
 
 [DEMO]
@@ -130,9 +130,9 @@ Let's run the evaluation. Each specialist scores each variant.
 
 [Run the evaluation. Show the scoring table as it populates.]
 
-Look at that. V3 won on schedule quality -- the hands-on format just scores better for flow and time allocation. But V1 actually won on announcement clarity -- the community angle makes for a more compelling invite.
+Look at that. V3 won on schedule quality — the hands-on format just scores better for flow and time allocation. But V1 actually won on announcement clarity — the community angle makes for a more compelling invite.
 
-This is why parallel generation is so powerful. You can see the tradeoffs explicitly. And you could even combine elements -- take V3's schedule with V1's announcement.
+This is why parallel generation is so powerful. You can see the tradeoffs explicitly. And you could even combine elements — take V3's schedule with V1's announcement.
 
 [PAUSE]
 
@@ -149,7 +149,7 @@ This isn't a trick. This is how production AI systems actually work. You just bu
 
 ---
 
-## Slide 12: The Missing Piece -- Learning
+## Slide 12: The Missing Piece — Learning
 **[~2 min]**
 
 OK. So our agent can plan great events. It can generate variants and pick the best one. But here's the problem.
@@ -193,7 +193,7 @@ Look at the before and after.
 
 Before feedback: "Maker Space Downtown, good location, affordable. Exercises: 30 minutes each."
 
-After feedback: "Tech Hub East -- because Maker Space WiFi was rated 3 out of 10. Confirmed 100Mbps connection. Exercises: 20 minutes max -- because past events ran over. Added hard cutoff timers. Lightning talks: added a 15-minute block -- because they were the highest-rated segment."
+After feedback: "Tech Hub East — because Maker Space WiFi was rated 3 out of 10. Confirmed 100Mbps connection. Exercises: 20 minutes max — because past events ran over. Added hard cutoff timers. Lightning talks: added a 15-minute block — because they were the highest-rated segment."
 
 [PAUSE]
 
@@ -203,18 +203,18 @@ Every recommendation changed because the agent read the feedback file before pla
 
 ---
 
-## Slide 16: LIVE DEMO -- The Full Loop
+## Slide 16: LIVE DEMO — The Full Loop
 **[~3 min]**
 
 [DEMO]
 
-Let's close the loop live. First, I'll create mock feedback from a past event -- WiFi issues, exercises too long, lightning talks were great.
+Let's close the loop live. First, I'll create mock feedback from a past event — WiFi issues, exercises too long, lightning talks were great.
 
 Now I'll run `/plan-event` for a new topic.
 
 [Run the command. Wait for output.]
 
-Watch the recommendations. There -- it recommended a different venue. It shortened the exercises. It added lightning talks.
+Watch the recommendations. There — it recommended a different venue. It shortened the exercises. It added lightning talks.
 
 The agent read the feedback, incorporated it, and made better decisions. No retraining. No fine-tuning. Just context.
 
@@ -274,7 +274,7 @@ You're going to build the parallel variant system, wire up evaluation using your
 
 Go.
 
-[PAUSE -- students begin exercise]
+[PAUSE — students begin exercise]
 
 ---
 
@@ -285,9 +285,9 @@ Welcome back. Let's check in.
 
 Three variants generated? Evaluated by your subagents? Winner selected? `/post-event` working? Feedback influencing plans?
 
-[PAUSE -- ask for hands or thumbs up]
+[PAUSE — ask for hands or thumbs up]
 
-If you got through all five, that's the full system. If you got through three or four, you're in great shape -- the rest is straightforward to finish on your own.
+If you got through all five, that's the full system. If you got through three or four, you're in great shape — the rest is straightforward to finish on your own.
 
 ---
 
@@ -306,14 +306,14 @@ Or take these patterns to a completely different project. Internal tools. Conten
 
 ---
 
-## Slide 22b: Current Claude Models
+## Slide 23: Current Claude Models
 **[~30 sec]**
 
 "Quick reference on current models — Opus 4.7 is the latest, a million-token context, best for complex reasoning and long autonomous tasks. Sonnet 4.6 is fast and capable for general use, also a million tokens. Haiku 4.5 is cheap and fast for triage and routing. That model routing we talked about in Session 3? Now you know the current lineup."
 
 ---
 
-## Slide 23: Course Recap
+## Slide 24: Course Recap
 **[~2 min]**
 
 Let me leave you with the arc of what we learned.
@@ -332,7 +332,7 @@ The through-line across all four sessions: the model stayed the same. What chang
 
 ---
 
-## Slide 24: Thank You
+## Slide 25: Thank You
 **[~1 min]**
 
 Resources are on the screen. Claude Code docs, the Agent SDK, ngrok AI Gateway, the context engineering guide, and the course repo with everything we built.
