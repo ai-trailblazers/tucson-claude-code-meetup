@@ -56,8 +56,10 @@ This is actually how production AI systems work at companies like Anthropic. You
 
 ---
 
-## Slide 5: Parallel Subagents
+## Slide 5: Parallel Subagents — The Architecture
 **[~2 min]**
+
+Walk them through the five stages on the diagram: spawn, diverge, generate, score, select. Point at each circled number as you go.
 
 Here's the architecture. The main agent spawns three subagents. Each one gets a different directive. V1 focuses on networking and community. V2 goes deep on technical content. V3 is all hands-on workshop.
 
@@ -291,7 +293,18 @@ If you got through all five, that's the full system. If you got through three or
 
 ---
 
-## Slide 22: Where to Go Next
+## Slide 22: Ship It — Deployment & The Hackathon
+**[~1.5 min]**
+
+You just built a working agent. Two things to think about before you walk out of here.
+
+First, deployment. Up to now you've been calling Anthropic directly. Fine for development. For anything you actually ship — internal tool, client work, side project — put ngrok AI Gateway in front. Same `/plan-event` you wrote today, no code changes. What you get: failover if Anthropic has a bad day, automatic cost routing where `ngrok/auto` picks the cheapest model that clears your quality bar, full observability on every call, and one endpoint that lets you swap providers later without touching the agent. Free tier covers everything MeetupBot needs.
+
+Second — the AI Trailblazers Hackathon, Memorial Day weekend, May 23rd through 25th. Next week. Bring MeetupBot, fork it, or start fresh — the patterns you learned here all transfer. Specialist subagents, parallel variants, feedback loops. There will be prizes, mentors, and a demo night. Sign up through the AI-Trailblazers meetup page. Bring your laptop and the CLAUDE.md you wrote in Session 1.
+
+---
+
+## Slide 23: Where to Go Next
 **[~1 min]**
 
 So where do you go from here?
@@ -306,14 +319,14 @@ Or take these patterns to a completely different project. Internal tools. Conten
 
 ---
 
-## Slide 23: Current Claude Models
+## Slide 24: Current Claude Models
 **[~30 sec]**
 
 "Quick reference on current models — Opus 4.7 is the latest, a million-token context, best for complex reasoning and long autonomous tasks. Sonnet 4.6 is fast and capable for general use, also a million tokens. Haiku 4.5 is cheap and fast for triage and routing. That model routing we talked about in Session 3? Now you know the current lineup."
 
 ---
 
-## Slide 24: Course Recap
+## Slide 25: Course Recap
 **[~2 min]**
 
 Let me leave you with the arc of what we learned.
@@ -332,7 +345,7 @@ The through-line across all four sessions: the model stayed the same. What chang
 
 ---
 
-## Slide 25: Thank You
+## Slide 26: Thank You
 **[~1 min]**
 
 Resources are on the screen. Claude Code docs, the Agent SDK, ngrok AI Gateway, the context engineering guide, and the course repo with everything we built.

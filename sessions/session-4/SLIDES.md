@@ -68,36 +68,39 @@ But what if we do it **intentionally**?
 
 ---
 
-## Slide 5: Parallel Subagents
+## Slide 5: Parallel Subagents — The Architecture
 
 ```
-                    ┌─────────────┐
-                    │  Main Agent  │
-                    └──────┬──────┘
-               ┌───────────┼───────────┐
-               v           v           v
-        ┌──────────┐ ┌──────────┐ ┌──────────┐
-        │ V1:      │ │ V2:      │ │ V3:      │
-        │ Network  │ │ Tech     │ │ Hands-on │
-        │ Focus    │ │ Depth    │ │ Workshop │
-        └──────────┘ └──────────┘ └──────────┘
-               │           │           │
-               v           v           v
-        Event Plan    Event Plan    Event Plan
-        + Schedule    + Schedule    + Schedule
-        + Announce    + Announce    + Announce
-               │           │           │
-               └───────────┼───────────┘
-                           v
-                  ┌────────────────┐
-                  │  Specialists   │
-                  │  Score Each    │
-                  └────────┬───────┘
-                           v
-                  ┌────────────────┐
-                  │ Winner Selected│
-                  └────────────────┘
+        ┌─────────────────────────────────────────────────────┐
+   ①    │  BRIEF  →  Main Agent  →  spawns 3 worktrees        │
+        └─────────────────────────────────────────────────────┘
+                              │
+              ┌───────────────┼───────────────┐
+              ▼               ▼               ▼
+        ┌──────────┐    ┌──────────┐    ┌──────────┐
+   ②    │   V1     │    │   V2     │    │   V3     │
+        │community │    │deep-dive │    │workshop  │
+        │  -first  │    │          │    │  -lab    │
+        └────┬─────┘    └────┬─────┘    └────┬─────┘
+             │               │               │
+             ▼               ▼               ▼
+   ③      Plan+            Plan+           Plan+
+        Schedule+         Schedule+       Schedule+
+        Announce          Announce        Announce
+             │               │               │
+             └───────────────┼───────────────┘
+                             ▼
+            ┌────────────────────────────────────┐
+   ④        │  Specialists score every variant   │
+            │ schedule-optimizer · comms-reviewer │
+            └────────────────┬───────────────────┘
+                             ▼
+                    ┌─────────────────┐
+   ⑤                │  Winner: V3 ⭐  │
+                    └─────────────────┘
 ```
+
+**① Spawn** → **② Diverge** (3 strategies) → **③ Generate** → **④ Score** → **⑤ Select**
 
 ---
 
@@ -382,7 +385,34 @@ By now you should have:
 
 ---
 
-## Slide 22: Where to Go Next — Routines & Beyond
+## Slide 22: Ship It — Deployment & The Hackathon
+
+**Take MeetupBot from your laptop to production.**
+
+### ngrok AI Gateway — production-grade LLM routing
+
+Same `/plan-event` you built today, now with:
+
+- **Failover** — Anthropic down? Auto-route to a backup provider
+- **Cost routing** — `ngrok/auto` picks the cheapest model that meets the bar
+- **Observability** — every call logged, latency tracked, errors caught
+- **One endpoint** — point Claude Code at the gateway URL, swap providers without code changes
+
+Free tier covers everything you need for MeetupBot.
+
+### 🚀 AI Trailblazers Hackathon — Memorial Day Weekend (May 23–25, 2026)
+
+**Next week.** Build on what you learned here.
+
+- Bring MeetupBot, fork it, or start something new
+- Specialist subagents, parallel variants, feedback loops — all fair game
+- Prizes, mentors, and a demo night to close it out
+
+Sign up through the AI-Trailblazers meetup page. Bring your laptop and your CLAUDE.md.
+
+---
+
+## Slide 23: Where to Go Next — Routines & Beyond
 
 ### Routines (new!) — Cloud automations without your laptop
 
@@ -409,7 +439,7 @@ npm install @anthropic-ai/claude-agent-sdk  # TypeScript
 
 ---
 
-## Slide 23: Current Claude Models
+## Slide 24: Current Claude Models
 
 | Model | Best For | Context |
 |---|---|---|
@@ -421,7 +451,7 @@ npm install @anthropic-ai/claude-agent-sdk  # TypeScript
 
 ---
 
-## Slide 24: Course Recap
+## Slide 25: Course Recap
 
 | Session | Key Lesson |
 |---|---|
@@ -436,7 +466,7 @@ Same model. What changed was the context, the structure, and the feedback.
 
 ---
 
-## Slide 25: Thank You
+## Slide 26: Thank You
 
 **Resources:**
 - [Claude Code Docs](https://code.claude.com/docs)

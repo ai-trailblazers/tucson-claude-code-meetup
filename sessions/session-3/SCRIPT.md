@@ -52,6 +52,8 @@ ls comms/
 
 If `events/` is empty, generate one now (takes ~10s):
 
+> Filename assumes `/plan-event` slugifies the title as kebab-case — adjust if yours differs.
+
 ```text
 /plan-event "Getting Started with AI Agents"
 /build-schedule events/getting-started-with-ai-agents.json
@@ -282,7 +284,7 @@ Run through each step. Let students see the chain.
 
 "Your goal: build specialist subagents that visibly outperform the monolith, plus an automated review hook. You saw me do it — now you build your own."
 
-"Start with the schedule-optimizer. Get it working. Then the comms-reviewer. Then wire up the hook. If you finish early, experiment with description wording — try removing 'use proactively', try making the description vague, try making it razor-sharp. Watch how Claude's invocation behavior changes. The description is the real lever."
+"Start with the schedule-optimizer. Get it working. Then the comms-reviewer. Then wire up the hook. If you finish early, experiment with the 'Proactively' keyword — see if you can get Claude to auto-invoke your subagents."
 
 [PAUSE] "Go. I'll circulate."
 
